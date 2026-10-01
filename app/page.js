@@ -160,19 +160,6 @@ export default function Home() {
             <div className="sectionLabel">The problem</div>
 
             <h2>Your process should not depend on workarounds.</h2>
-
-            <figure className="problemImage">
-              <Image
-                src="/images/problem-desk.png"
-                alt="A desk buried under printed spreadsheets, invoices, and sticky notes"
-                fill
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
-              <figcaption>
-                <span>status:</span> 14 spreadsheets, 3 inboxes, 0 source of
-                truth
-              </figcaption>
-            </figure>
           </div>
 
           <div className="largeBody" data-reveal>
@@ -194,6 +181,19 @@ export default function Home() {
 
             <strong>That is where custom software starts to make sense.</strong>
           </div>
+
+          <figure className="problemImage" data-reveal>
+            <Image
+              src="/images/problem-desk.png"
+              alt="A desk buried under printed spreadsheets, invoices, and sticky notes"
+              fill
+              sizes="(max-width: 900px) 100vw, 1200px"
+            />
+            <figcaption>
+              <span>status:</span> 14 spreadsheets, 3 inboxes, 0 source of
+              truth
+            </figcaption>
+          </figure>
         </div>
       </section>
 

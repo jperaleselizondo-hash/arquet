@@ -1507,12 +1507,31 @@ main {
    IMAGES + GRAPHICS
    ------------------------- */
 
+.problem .split {
+  row-gap: 72px;
+}
+
 .problemImage {
   position: relative;
-  aspect-ratio: 16 / 10;
-  margin: 48px 0 0;
+  grid-column: 1 / -1;
+  aspect-ratio: 21 / 8;
+  margin: 0;
   border: 1px solid var(--border);
   overflow: hidden;
+}
+
+.problemImage figcaption {
+  max-width: max-content;
+}
+
+@media (max-width: 900px) {
+  .problem .split {
+    row-gap: 48px;
+  }
+
+  .problemImage {
+    aspect-ratio: 16 / 10;
+  }
 }
 
 .problemImage img {
