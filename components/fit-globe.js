@@ -8,7 +8,7 @@ import {
   geoOrthographic,
   geoPath,
 } from "d3-geo";
-import { feature } from "topojson-client";
+import { feature, mesh } from "topojson-client";
 
 const CITIES = {
   cdmx: [-99.13, 19.43],
@@ -66,6 +66,9 @@ export default function FitGlobe() {
     ).matches;
 
     let land = null;
+    let highlighted = null;
+    let borders = null;
+    let coastline = null;
     let frame = 0;
     let running = false;
     let size = 0;
@@ -206,30 +209,44 @@ export default function FitGlobe() {
       path({ type: "Sphere" });
       ctx.fillStyle = glow;
       ctx.fill();
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.14)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.22)";
       ctx.lineWidth = 1;
       ctx.stroke();
 
       ctx.beginPath();
       path(graticule);
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.07)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
       ctx.lineWidth = 0.8;
       ctx.stroke();
 
       if (land) {
-        for (const country of land.features) {
-          ctx.beginPath();
-          path(country);
-          if (HIGHLIGHT_IDS.has(country.id)) {
-            ctx.fillStyle = "rgba(255, 255, 255, 0.07)";
-            ctx.fill();
-            ctx.strokeStyle = "rgba(255, 255, 255, 0.34)";
-          } else {
-            ctx.strokeStyle = "rgba(255, 255, 255, 0.16)";
-          }
-          ctx.lineWidth = 0.7;
-          ctx.stroke();
-        }
+        ctx.fillStyle = "rgba(255, 255, 255, 0.035)";
+        ctx.beginPath();
+        path(land);
+        ctx.fill();
+
+        ctx.beginPath();
+        path(highlighted);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
+        ctx.fill();
+
+        ctx.beginPath();
+        path(borders);
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+
+        ctx.beginPath();
+        path(coastline);
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+
+        ctx.beginPath();
+        path(highlighted);
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.72)";
+        ctx.lineWidth = 0.9;
+        ctx.stroke();
       }
 
       ctx.fillStyle = "rgba(237, 237, 237, 0.55)";
@@ -284,10 +301,17 @@ export default function FitGlobe() {
     };
 
     resize();
-    import("world-atlas/countries-110m.json").then((module) => {
+    import("world-atlas/countries-50m.json").then((module) => {
       if (disposed) return;
       const topology = module.default ?? module;
-      land = feature(topology, topology.objects.countries);
+      const countries = topology.objects.countries;
+      land = feature(topology, countries);
+      highlighted = {
+        type: "FeatureCollection",
+        features: land.features.filter((c) => HIGHLIGHT_IDS.has(c.id)),
+      };
+      borders = mesh(topology, countries, (a, b) => a !== b);
+      coastline = mesh(topology, countries, (a, b) => a === b);
       if (reduceMotion) renderStatic();
     });
 
