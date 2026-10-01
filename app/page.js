@@ -332,14 +332,14 @@ export default function Home() {
         <div className="shell">
           <div className="sectionLabel lightLabel">Who it is for</div>
 
-          <div className="fitGrid" data-reveal>
-            <h2>
-              Built for operationally
-              <br />
-              complex B2B companies.
-            </h2>
+          <div className="fitGrid">
+            <div className="fitCopy" data-reveal>
+              <h2>
+                Built for operationally
+                <br />
+                complex B2B companies.
+              </h2>
 
-            <div>
               <p>
                 Arquet is particularly suited to businesses where multiple
                 people, documents, decisions, and steps have to come together
@@ -355,9 +355,9 @@ export default function Home() {
                 <span>Agencies</span>
               </div>
             </div>
-          </div>
 
-          <IndustryGallery />
+            <IndustryGallery />
+          </div>
 
           <div className="fitStatement" data-reveal>
             If your operation depends heavily on{" "}

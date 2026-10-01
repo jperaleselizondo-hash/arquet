@@ -26,20 +26,17 @@ export default function IndustryGallery() {
           className="industryFigure"
           key={industry.src}
           data-reveal
-          style={{ "--delay": `${index * 120}ms` }}
+          style={{ "--delay": `${index * 160}ms` }}
         >
           <div className="industryImage">
             <Image
               src={industry.src}
               alt={industry.alt}
               fill
-              sizes="(max-width: 620px) 100vw, (max-width: 900px) 50vw, 33vw"
+              sizes="(max-width: 900px) 100vw, 30vw"
             />
           </div>
-          <figcaption>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            {industry.caption}
-          </figcaption>
+          <figcaption>{industry.caption}</figcaption>
         </figure>
       ))}
     </div>
