@@ -1,3 +1,9 @@
+import Image from "next/image";
+import RevealObserver from "@/components/reveal-observer";
+import HeroVisual from "@/components/hero-visual";
+import FlowDiagram from "@/components/flow-diagram";
+import IndustryGallery from "@/components/industry-gallery";
+
 const capabilities = [
   {
     title: "Internal Operations Systems",
@@ -88,6 +94,8 @@ const processSteps = [
 export default function Home() {
   return (
     <main>
+      <RevealObserver />
+
       <header className="nav shell">
         <a className="brand" href="#top">
           Arquet
@@ -102,22 +110,30 @@ export default function Home() {
         </nav>
       </header>
 
-      <section id="top" className="hero shell">
-        <div className="eyebrow">Custom B2B software</div>
+      <div className="heroBackdrop" aria-hidden="true">
+        <div className="heroGrid" />
+        <div className="heroGlow" />
+      </div>
 
-        <h1>
+      <section id="top" className="hero shell">
+        <div className="eyebrow intro" style={{ "--d": "0ms" }}>
+          Custom B2B software
+        </div>
+
+        <h1 className="intro" style={{ "--d": "100ms" }}>
           Software built around
           <br />
           how your business works.
+          <span className="cursor" aria-hidden="true" />
         </h1>
 
-        <p className="heroText">
+        <p className="heroText intro" style={{ "--d": "220ms" }}>
           We design and build custom operational software for B2B companies
           that have outgrown spreadsheets, disconnected tools, and manual
           workflows.
         </p>
 
-        <div className="heroActions">
+        <div className="heroActions intro" style={{ "--d": "340ms" }}>
           <a className="primaryButton" href="#contact">
             Discuss your project
             <span>→</span>
@@ -128,6 +144,8 @@ export default function Home() {
           </a>
         </div>
 
+        <HeroVisual />
+
         <div className="heroFooter">
           <span>Where business logic becomes software.</span>
         </div>
@@ -135,13 +153,26 @@ export default function Home() {
 
       <section className="problem sectionBorder">
         <div className="shell split">
-          <div>
+          <div data-reveal>
             <div className="sectionLabel">The problem</div>
 
             <h2>Your process should not depend on workarounds.</h2>
+
+            <figure className="problemImage">
+              <Image
+                src="/images/problem-desk.png"
+                alt="A desk buried under printed spreadsheets, invoices, and sticky notes"
+                fill
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
+              <figcaption>
+                <span>status:</span> 14 spreadsheets, 3 inboxes, 0 source of
+                truth
+              </figcaption>
+            </figure>
           </div>
 
-          <div className="largeBody">
+          <div className="largeBody" data-reveal>
             <p>
               Many businesses reach a point where their operations become too
               complex for the tools holding them together.
@@ -168,11 +199,13 @@ export default function Home() {
           <div className="sectionLabel lightLabel">What we do</div>
 
           <div className="logicGrid">
-            <div>
+            <div data-reveal>
               <h2>We turn your process into a working system.</h2>
+
+              <FlowDiagram />
             </div>
 
-            <div className="logicContent">
+            <div className="logicContent" data-reveal>
               <p>
                 Arquet starts with the business logic behind your operation.
               </p>
@@ -196,7 +229,7 @@ export default function Home() {
 
       <section id="work" className="work sectionBorder">
         <div className="shell">
-          <div className="sectionHeader">
+          <div className="sectionHeader" data-reveal>
             <div>
               <div className="sectionLabel">What we build</div>
               <h2>Operational software for real business workflows.</h2>
@@ -210,7 +243,12 @@ export default function Home() {
 
           <div className="capabilityGrid">
             {capabilities.map((capability, index) => (
-              <article className="capabilityCard" key={capability.title}>
+              <article
+                className="capabilityCard"
+                key={capability.title}
+                data-reveal
+                style={{ "--delay": `${(index % 3) * 90}ms` }}
+              >
                 <span className="cardNumber">
                   {String(index + 1).padStart(2, "0")}
                 </span>
@@ -238,7 +276,7 @@ export default function Home() {
 
       <section id="process" className="process">
         <div className="shell">
-          <div className="sectionHeader">
+          <div className="sectionHeader" data-reveal>
             <div>
               <div className="sectionLabel">Our process</div>
               <h2>From business process to working application.</h2>
@@ -252,7 +290,7 @@ export default function Home() {
 
           <div className="processList">
             {processSteps.map((step) => (
-              <article className="processRow" key={step.number}>
+              <article className="processRow" key={step.number} data-reveal>
                 <div className="stepNumber">{step.number}</div>
 
                 <div className="stepTitle">
@@ -278,7 +316,7 @@ export default function Home() {
         <div className="shell">
           <div className="sectionLabel lightLabel">Who it is for</div>
 
-          <div className="fitGrid">
+          <div className="fitGrid" data-reveal>
             <h2>
               Built for operationally
               <br />
@@ -303,7 +341,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="fitStatement">
+          <IndustryGallery />
+
+          <div className="fitStatement" data-reveal>
             If your operation depends heavily on{" "}
             <strong>Excel, email, WhatsApp, manual follow-up,</strong> or several
             disconnected tools, there may be a better way to structure it.
@@ -312,7 +352,7 @@ export default function Home() {
       </section>
 
       <section className="custom sectionBorder">
-        <div className="shell split">
+        <div className="shell split" data-reveal>
           <div>
             <div className="sectionLabel">Why custom software</div>
 
@@ -347,7 +387,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="contact">
-        <div className="shell contactInner">
+        <div className="shell contactInner" data-reveal>
           <div className="sectionLabel">Start a conversation</div>
 
           <h2>Tell us how your business works today.</h2>
