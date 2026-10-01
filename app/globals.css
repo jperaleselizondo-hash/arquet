@@ -1137,8 +1137,8 @@ main {
   width: 900px;
   height: 500px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(124, 255, 155, 0.09), transparent 65%);
-  filter: blur(20px);
+  background: radial-gradient(ellipse at center, rgba(124, 255, 155, 0.03), transparent 65%);
+  filter: blur(40px);
   animation: glowPulse 7s ease-in-out infinite;
 }
 
