@@ -65,7 +65,6 @@ const processSteps = [
   },
 ];
 
-const frictionSources = ["Excel", "Email", "WhatsApp", "PDFs", "Memory"];
 
 const industries = [
   "Supply & distribution",
@@ -156,42 +155,6 @@ export default function Home() {
             label="How Arquet works"
             items={["Process", "Rules", "System"]}
           />
-        </div>
-      </section>
-
-      <section className="problem sectionBorder vvSection">
-        <div className="shell vvSplit">
-          <div className="vvHead" data-reveal>
-            <div className="sectionLabel">The problem</div>
-            <h2>Your process should not depend on workarounds.</h2>
-            <p className="vvLede">
-              When work runs across five tools, every step between them depends
-              on someone remembering.
-            </p>
-          </div>
-
-          <figure className="friction" data-reveal>
-            <span className="vvTag">Today</span>
-            <ul className="frictionSources">
-              {frictionSources.map((source) => (
-                <li key={source}>{source}</li>
-              ))}
-            </ul>
-            <svg
-              className="frictionLines"
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              {[10, 30, 50, 70, 90].map((x) => (
-                <line key={x} x1={x} y1="0" x2="50" y2="100" />
-              ))}
-            </svg>
-            <figcaption className="frictionResult">Friction</figcaption>
-            <span className="frictionNote">
-              Missed steps · Duplicate data · No source of truth
-            </span>
-          </figure>
         </div>
       </section>
 
