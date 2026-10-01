@@ -108,7 +108,7 @@ export default function Home() {
         <nav className="navLinks">
           <a href="#work">What we build</a>
           <a href="#process">Process</a>
-          <a className="navCta" href="#contact">
+          <a className="navCta" href="mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry">
             Discuss your project
           </a>
         </nav>
@@ -157,7 +157,7 @@ export default function Home() {
         </p>
 
         <div className="heroActions intro" style={{ "--d": "340ms" }}>
-          <a className="primaryButton" href="#contact">
+          <a className="primaryButton" href="mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry">
             Discuss your project
             <span>→</span>
           </a>
@@ -284,7 +284,7 @@ export default function Home() {
               software.
             </p>
 
-            <a href="#contact">
+            <a href="mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry">
               Tell us what you need <span>→</span>
             </a>
           </div>
@@ -445,7 +445,7 @@ export default function Home() {
 
           <a
             className="primaryButton"
-            href="mailto:hello@arquet.dev?subject=Arquet project inquiry"
+            href="mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry"
           >
             Discuss your project
             <span>→</span>
