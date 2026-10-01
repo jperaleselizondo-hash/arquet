@@ -366,18 +366,29 @@ strong {
 
 .logicHeader {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 64px;
-  margin-bottom: 64px;
-}
-
-.logicHeader h2 {
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  margin: 0 auto 64px;
+  max-width: 720px;
+  text-align: center;
+  }
+  
+  .logicHeader > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  .logicHeader h2 {
   max-width: 640px;
-}
-
-.logicIntro {
-  max-width: 420px;
+  margin-bottom: 0;
+  text-wrap: balance;
+  }
+  
+  .logicIntro {
+  max-width: 560px;
+  text-wrap: pretty;
   color: var(--muted);
   font-size: 16px;
   line-height: 1.6;
@@ -619,11 +630,9 @@ strong {
 }
 
 @media (max-width: 820px) {
-  .logicHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 28px;
-    margin-bottom: 44px;
+.logicHeader {
+  gap: 24px;
+  margin-bottom: 44px;
   }
 
   .logicShell {
