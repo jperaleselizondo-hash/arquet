@@ -82,25 +82,13 @@ const scenarios = [
   ],
 ];
 
-const legend = ["trigger", "rule", "role", "status", "action"];
-
 const STEP_MS = 1100;
 const HOLD_MS = 2200;
-
-const formatClock = (tick) => {
-  const total = 9 * 3600 + 41 * 60 + tick * 3;
-  const h = String(Math.floor(total / 3600)).padStart(2, "0");
-  const m = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
-  const s = String(total % 60).padStart(2, "0");
-  return `${h}:${m}:${s}`;
-};
 
 function useProcessLoop(rootRef) {
   const [scenario, setScenario] = useState(0);
   const [step, setStep] = useState(0);
-  const [log, setLog] = useState([]);
   const [running, setRunning] = useState(false);
-  const tickRef = useRef(0);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -121,11 +109,6 @@ function useProcessLoop(rootRef) {
   useEffect(() => {
     if (!running) return;
     const steps = scenarios[scenario];
-    const current = steps[step];
-    tickRef.current += 1;
-    const entry = { id: tickRef.current, time: formatClock(tickRef.current), type: nodes[current.node].type, text: current.log };
-    setLog((prev) => [entry, ...prev].slice(0, 5));
-
     const isLast = step === steps.length - 1;
     const timer = setTimeout(
       () => {
@@ -146,8 +129,6 @@ function useProcessLoop(rootRef) {
   return {
     scenario,
     step,
-    log,
-    running,
     active: steps[step],
     visitedNodes: new Set(done.map((s) => s.node)),
     visitedEdges: new Set(done.filter((s) => s.edge).map((s) => s.edge)),
@@ -219,7 +200,7 @@ const mobileOrder = ["request", "validate", "assign", "review", "decision", "man
 
 export default function ProcessBoard() {
   const rootRef = useRef(null);
-  const { scenario, step, log, running, active, visitedNodes, visitedEdges } = useProcessLoop(rootRef);
+  const { scenario, step, active, visitedNodes, visitedEdges } = useProcessLoop(rootRef);
 
   const nodeState = (id) => {
     if (active.node === id) return "active";
@@ -302,40 +283,6 @@ export default function ProcessBoard() {
         })}
       </ol>
 
-      <div className="boardFooter">
-        <div className="boardLog" aria-live="off">
-          <div className="boardLogHead">
-            <span className={`liveDot${running ? " on" : ""}`} />
-            <span>event log</span>
-            <span className="boardLogMeta">{running ? "running" : "idle"}</span>
-          </div>
-          <ul>
-            {log.map((entry) => (
-              <li key={entry.id}>
-                <span className="logTime">{entry.time}</span>
-                <span className="logType">{entry.type}</span>
-                <span className="logText">{entry.text}</span>
-              </li>
-            ))}
-            {log.length === 0 ? (
-              <li>
-                <span className="logTime">--:--:--</span>
-                <span className="logType">idle</span>
-                <span className="logText">waiting for trigger</span>
-                <span className="cursor" />
-              </li>
-            ) : null}
-          </ul>
-        </div>
-
-        <div className="boardLegend">
-          {legend.map((type) => (
-            <span key={type} className={active && nodes[active.node].type === type ? "on" : ""}>
-              {type}
-            </span>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
