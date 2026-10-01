@@ -3482,13 +3482,11 @@ main {
   margin-bottom: 56px;
 }
 
-/* Who it is for: list + fit equation */
+/* Who it is for */
 
 .fitLayout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
-  gap: 96px;
-  align-items: center;
+  grid-template-columns: minmax(0, 760px);
 }
 
 .fitList {
@@ -3505,53 +3503,6 @@ main {
   padding: 14px 0;
   border-bottom: 1px solid var(--border-light);
   font-size: 15px;
-}
-
-.equation {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 32px;
-  border: 1px solid var(--border-light);
-  background: rgba(0, 0, 0, 0.78);
-}
-
-.eqTerms {
-  margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.eqTerms li,
-.eqResult {
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  align-items: baseline;
-}
-
-.eqTerms li {
-  padding: 12px 0;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.eqOp {
-  color: var(--muted-2);
-  font-family: var(--mono-font);
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.eqResult {
-  margin-top: 16px;
-  padding-top: 20px;
-  border-top: 1px solid var(--text);
-  color: var(--text);
-  font-family: var(--mono-font);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 /* Why custom: two paths compared */
@@ -3690,14 +3641,6 @@ main {
 
   .fitList {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .equation {
-    padding: 24px;
-  }
-
-  .eqTerms li {
-    font-size: 18px;
   }
 
   .compareCol {

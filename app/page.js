@@ -76,12 +76,6 @@ const industries = [
   "Agencies",
 ];
 
-const fitTerms = [
-  "Complex workflow",
-  "High-value transactions",
-  "Spreadsheets, email, WhatsApp",
-];
-
 export default function Home() {
   return (
     <main>
@@ -303,24 +297,6 @@ export default function Home() {
               ))}
             </ul>
           </div>
-
-          <figure className="equation" data-reveal>
-            <span className="vvTag">Fit test</span>
-            <ol className="eqTerms">
-              {fitTerms.map((term, index) => (
-                <li key={term}>
-                  <span className="eqOp" aria-hidden="true">
-                    {index === 0 ? "" : "+"}
-                  </span>
-                  {term}
-                </li>
-              ))}
-            </ol>
-            <figcaption className="eqResult">
-              <span className="eqOp" aria-hidden="true">=</span>
-              Good fit for custom software
-            </figcaption>
-          </figure>
         </div>
       </section>
 
