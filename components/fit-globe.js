@@ -83,9 +83,12 @@ export default function FitGlobe() {
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const nextWidth = Math.round(rect.width * dpr);
+      const nextHeight = Math.round(rect.height * dpr);
+      if (nextWidth === canvas.width && nextHeight === canvas.height && size === rect.width) return;
       size = rect.width;
-      canvas.width = Math.round(rect.width * dpr);
-      canvas.height = Math.round(rect.height * dpr);
+      canvas.width = nextWidth;
+      canvas.height = nextHeight;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       projection
         .scale(size * 0.46)
@@ -288,11 +291,16 @@ export default function FitGlobe() {
       if (reduceMotion) renderStatic();
     });
 
+    let resizeFrame = 0;
     const resizeObserver = new ResizeObserver(() => {
-      resize();
-      if (!running) draw(performance.now());
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => {
+        if (disposed) return;
+        resize();
+        if (!running) draw(performance.now());
+      });
     });
-    resizeObserver.observe(canvas);
+    resizeObserver.observe(canvas.parentElement ?? canvas);
 
     const visibilityObserver = new IntersectionObserver(
       ([entry]) => (entry.isIntersecting ? start() : stop()),
@@ -303,6 +311,7 @@ export default function FitGlobe() {
     return () => {
       disposed = true;
       stop();
+      cancelAnimationFrame(resizeFrame);
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
     };
