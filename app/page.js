@@ -3,6 +3,7 @@ import RevealObserver from "@/components/reveal-observer";
 import HeroVisual from "@/components/hero-visual";
 import FlowDiagram from "@/components/flow-diagram";
 import IndustryGallery from "@/components/industry-gallery";
+import ArquetMark from "@/components/arquet-mark";
 
 const capabilities = [
   {
@@ -98,6 +99,7 @@ export default function Home() {
 
       <header className="nav shell">
         <a className="brand" href="#top">
+          <ArquetMark className="brandMark" strokeWidth={56} />
           Arquet
         </a>
 
@@ -113,6 +115,7 @@ export default function Home() {
       <div className="heroBackdrop" aria-hidden="true">
         <div className="heroGrid" />
         <div className="heroGlow" />
+        <ArquetMark className="heroMark" strokeWidth={3} />
       </div>
 
       <section id="top" className="hero shell">
@@ -387,7 +390,11 @@ export default function Home() {
       </section>
 
       <section id="contact" className="contact">
+        <ArquetMark className="contactWatermark" strokeWidth={4} />
+
         <div className="shell contactInner" data-reveal>
+          <ArquetMark className="contactMark" strokeWidth={30} />
+
           <div className="sectionLabel">Start a conversation</div>
 
           <h2>Tell us how your business works today.</h2>
@@ -411,7 +418,10 @@ export default function Home() {
       <footer className="footer">
         <div className="shell footerInner">
           <div>
-            <div className="footerBrand">Arquet</div>
+            <div className="footerBrand">
+              <ArquetMark className="footerMark" strokeWidth={56} />
+              Arquet
+            </div>
             <p>Where business logic becomes software.</p>
           </div>
 
