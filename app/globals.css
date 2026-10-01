@@ -23,7 +23,7 @@ html {
   --border: #242424;
   --border-light: #303030;
 
-  --accent: #7cff9b;
+  --accent: #c19138;
 
   --shell: 1100px;
 }
@@ -487,7 +487,7 @@ strong {
 }
 
 .bTrail {
-  stroke: rgba(124, 255, 155, 0.45);
+  stroke: rgba(193, 145, 56, 0.45);
   stroke-width: 1.4;
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
@@ -499,7 +499,7 @@ strong {
   stroke-width: 3.5;
   stroke-dasharray: 6 120;
   stroke-dashoffset: 6;
-  filter: drop-shadow(0 0 6px rgba(124, 255, 155, 0.9));
+  filter: drop-shadow(0 0 6px rgba(193, 145, 56, 0.9));
   animation: boardComet 700ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -565,8 +565,8 @@ strong {
 
 .bNode.active .bShape {
   stroke: var(--accent);
-  fill: #0c130e;
-  filter: drop-shadow(0 0 10px rgba(124, 255, 155, 0.25));
+  fill: #0c0f19;
+  filter: drop-shadow(0 0 10px rgba(193, 145, 56, 0.25));
 }
 
 .bNode.active .bLabel {
@@ -591,7 +591,7 @@ strong {
 
 .bStatus rect {
   fill: #050505;
-  stroke: rgba(124, 255, 155, 0.5);
+  stroke: rgba(193, 145, 56, 0.5);
 }
 
 .bStatus circle {
@@ -716,11 +716,11 @@ strong {
   .mNode.active .mMarker {
     border-color: var(--accent);
     background: var(--accent);
-    box-shadow: 0 0 12px rgba(124, 255, 155, 0.6);
+    box-shadow: 0 0 12px rgba(193, 145, 56, 0.6);
   }
 
   .mNode.active .mTag {
-    border-color: rgba(124, 255, 155, 0.5);
+    border-color: rgba(193, 145, 56, 0.5);
     color: var(--accent);
     text-transform: none;
     letter-spacing: 0;
@@ -1137,8 +1137,8 @@ main {
   width: 900px;
   height: 500px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(124, 255, 155, 0.09), transparent 65%);
-  filter: blur(20px);
+  background: radial-gradient(ellipse at center, rgba(193, 145, 56, 0.03), transparent 65%);
+  filter: blur(40px);
   animation: glowPulse 7s ease-in-out infinite;
 }
 
@@ -1225,7 +1225,7 @@ main {
   background: var(--surface);
   box-shadow:
     0 40px 120px -30px rgba(0, 0, 0, 0.9),
-    0 0 0 1px rgba(124, 255, 155, 0.04);
+    0 0 0 1px rgba(255, 255, 255, 0.04);
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 12px;
   overflow: hidden;
@@ -1263,7 +1263,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: var(--accent);
+  color: var(--foreground);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1273,17 +1273,17 @@ main {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 0 rgba(124, 255, 155, 0.6);
+  background: var(--foreground);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
   animation: livePing 1.8s ease-out infinite;
 }
 
 @keyframes livePing {
   0% {
-    box-shadow: 0 0 0 0 rgba(124, 255, 155, 0.6);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
   }
   100% {
-    box-shadow: 0 0 0 8px rgba(124, 255, 155, 0);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
   }
 }
 
@@ -1364,7 +1364,7 @@ main {
 .mockBrandMark {
   width: 14px;
   height: 14px;
-  border: 1.5px solid var(--accent);
+  border: 1.5px solid var(--foreground);
   border-radius: 3px;
 }
 
@@ -1387,7 +1387,7 @@ main {
   width: 20px;
   height: 20px;
   border-radius: 5px;
-  background: rgba(124, 255, 155, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .mockWorkspaceText {
@@ -1436,8 +1436,8 @@ main {
 .mockCount {
   padding: 1px 6px;
   border-radius: 999px;
-  background: rgba(124, 255, 155, 0.12);
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--foreground);
   font-size: 9.5px;
 }
 
@@ -1507,7 +1507,7 @@ main {
 .mockNavItem.isActive {
   background: var(--m-hover);
   color: var(--m-text);
-  box-shadow: inset 2px 0 0 var(--accent);
+  box-shadow: inset 2px 0 0 var(--foreground);
 }
 
 .mockNavItem:focus-visible,
@@ -1515,7 +1515,7 @@ main {
 .mockSignOut:focus-visible,
 .mockToggle:focus-visible,
 .mockSwitch:focus-visible {
-  outline: 1px solid var(--accent);
+  outline: 1px solid var(--foreground);
   outline-offset: 1px;
 }
 
@@ -1557,7 +1557,7 @@ main {
 }
 
 .mockSubItem.isActive {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .mockSignOut {
@@ -1597,7 +1597,7 @@ main {
   justify-content: center;
   width: 28px;
   height: 28px;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--foreground);
   border-radius: 6px;
   background: transparent;
   color: var(--m-text);
@@ -1718,9 +1718,9 @@ main {
 .mockBadge {
   display: inline-flex;
   padding: 6px 8px;
-  border: 1px solid rgba(124, 255, 155, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 6px;
-  background: rgba(124, 255, 155, 0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .mockCard {
@@ -1826,7 +1826,7 @@ main {
 
 .mockDelta {
   font-size: 9.5px;
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .mockDelta.isDown {
@@ -1882,7 +1882,7 @@ main {
 
 .mockBars span:last-child,
 .mockBars span:hover {
-  background: var(--accent);
+  background: var(--foreground);
 }
 
 @keyframes barGrow {
@@ -1935,8 +1935,8 @@ main {
   justify-self: start;
   padding: 2px 7px;
   border-radius: 999px;
-  background: rgba(124, 255, 155, 0.1);
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--foreground);
   font-size: 9.5px;
 }
 
@@ -2363,7 +2363,7 @@ main {
 .brandMark {
   width: 18px;
   height: 18px;
-  color: var(--accent);
+  color: var(--text);
   transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -2374,7 +2374,7 @@ main {
 .footerMark {
   width: 16px;
   height: 16px;
-  color: var(--accent);
+  color: var(--text);
 }
 
 .brandTagline {
@@ -2443,7 +2443,7 @@ main {
 .coverMark {
   width: 38px;
   height: 38px;
-  color: var(--accent);
+  color: var(--text);
 }
 
 .cover + .coverIconRow + .heroBackdrop + .hero {
@@ -2735,8 +2735,8 @@ main {
 }
 
 .dmTable.isTouched {
-  border-color: rgba(124, 255, 155, 0.4);
-  box-shadow: 0 0 0 3px rgba(124, 255, 155, 0.05);
+  border-color: rgba(193, 145, 56, 0.4);
+  box-shadow: 0 0 0 3px rgba(193, 145, 56, 0.05);
 }
 
 .dmTableHead {
@@ -2814,7 +2814,7 @@ main {
 
 .dmMethod {
   padding: 2px 6px;
-  border: 1px solid rgba(124, 255, 155, 0.35);
+  border: 1px solid rgba(193, 145, 56, 0.35);
   border-radius: 4px;
   font-size: 10px;
   letter-spacing: 0.06em;
@@ -2921,8 +2921,8 @@ main {
 }
 
 .dmNode.is-active {
-  border-color: rgba(124, 255, 155, 0.55);
-  box-shadow: 0 0 0 4px rgba(124, 255, 155, 0.06);
+  border-color: rgba(193, 145, 56, 0.55);
+  box-shadow: 0 0 0 4px rgba(193, 145, 56, 0.06);
 }
 
 .dmNodeHead {
@@ -3025,7 +3025,7 @@ main {
 
 .dmReturn code {
   padding: 1px 6px;
-  border: 1px solid rgba(124, 255, 155, 0.3);
+  border: 1px solid rgba(193, 145, 56, 0.3);
   border-radius: 4px;
   font-size: 10px;
   color: var(--accent);
