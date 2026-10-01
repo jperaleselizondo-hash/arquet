@@ -888,62 +888,36 @@ strong {
   transform: none;
 }
 
+.flowStep,
+.flowStep h3,
+.flowStep p {
+  text-align: left;
+}
+
 .flowVisual {
-  position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   margin-bottom: 18px;
 }
 
-.flowGlyph {
-  width: 72px;
-  height: 72px;
+.flowIcon {
+  display: grid;
+  place-items: center;
   flex: none;
-  overflow: visible;
-}
 
-.flowDot {
-  fill: none;
-  stroke: var(--muted);
-  stroke-width: 1.2;
-}
+  width: 44px;
+  height: 44px;
 
-.flowDot.isFilled {
-  fill: var(--text);
-  stroke: var(--text);
-}
-
-.flowWire line {
-  stroke: var(--border-light);
-  stroke-width: 1.2;
-}
-
-.flowSolid {
-  fill: var(--text);
+  color: var(--text);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
 }
 
 .flowArrow {
-  position: relative;
-  flex: 1;
-  height: 1px;
-  margin: 0 -8px 0 20px;
-
-  background: linear-gradient(90deg, var(--border-light), var(--muted));
-}
-
-.flowArrow::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: -3px;
-
-  width: 7px;
-  height: 7px;
-
-  border-top: 1px solid var(--muted);
-  border-right: 1px solid var(--muted);
-  transform: rotate(45deg);
+  flex: none;
+  color: var(--muted);
 }
 
 .flowState {
@@ -999,13 +973,13 @@ strong {
     margin-bottom: 12px;
   }
 
-  .flowGlyph {
-    width: 48px;
-    height: 48px;
+  .flowIcon {
+    width: 38px;
+    height: 38px;
   }
 
   .flowArrow {
-    margin-left: 12px;
+    display: none;
   }
 
   .flowStep h3 {
