@@ -3,23 +3,24 @@
 import { useState } from "react";
 
 const iconPaths = {
-  live: "M5 12a7 7 0 0 1 2-5M19 12a7 7 0 0 0-2-5M8.5 12a3.5 3.5 0 0 1 1-2.5M15.5 12a3.5 3.5 0 0 0-1-2.5M12 12h.01",
   grid: "M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z",
-  vault: "M5 8h14v12H5zM9 8V5h6v3",
-  check: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM8.5 12l2.5 2.5 4.5-5",
-  buyer: "M3 12l5-5h6l7 7-5 5-7-7zM10 10h.01",
-  supplier: "M4 20V9l8-5 8 5v11M9 20v-6h6v6",
-  accounts: "M4 20h16M6 20V10M10 20V6M14 20v-8M18 20V4",
-  members: "M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.6",
-  user: "M10 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM4 20a6 6 0 0 1 10-4.5M17 14v6M14 17h6",
+  chart: "M4 20h16M7 16v-5M12 16V7M17 16v-8",
+  inbox: "M4 13l2.5-8h11L20 13v6H4zM4 13h5l1 2h4l1-2h5",
+  users: "M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.6",
+  folder: "M3 7h6l2 2h10v10H3z",
+  invoice: "M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6",
+  team: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0",
+  plug: "M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0zM12 16v5",
   settings: "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2",
   billing: "M3 6h18v12H3zM3 10h18",
-  signout: "M10 4H5v16h5M14 8l4 4-4 4M18 12H9",
+  search: "M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4",
+  bell: "M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4",
   panel: "M4 5h16v14H4zM9 5v14",
   chevron: "M7 10l5 5 5-5",
+  updown: "M8 9l4-4 4 4M8 15l4 4 4-4",
   sun: "M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 2v2M12 20v2M4 12H2M22 12h-2",
   moon: "M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z",
-  arrow: "M7 17L17 7M9 7h8v8",
+  plus: "M12 5v14M5 12h14",
 };
 
 function Icon({ name }) {
@@ -40,31 +41,40 @@ function Icon({ name }) {
 }
 
 const navGroups = [
-  [{ id: "live", label: "Live Feed", icon: "live" }],
-  [
-    { id: "dashboard", label: "Dashboard", icon: "grid" },
-    { id: "vault", label: "Document Vault", icon: "vault" },
-    { id: "verification", label: "Verification", icon: "check" },
-  ],
-  [
-    { id: "buyer", label: "Buyer", icon: "buyer", children: ["Solicitations", "Offers"] },
-    { id: "supplier", label: "Supplier", icon: "supplier", children: ["Catalog", "Submitted"] },
-  ],
-  [
-    { id: "accounts", label: "Accounts", icon: "accounts" },
-    { id: "members", label: "Account Members", icon: "members" },
-  ],
-  [
-    { id: "userSettings", label: "User Settings", icon: "user" },
-    { id: "accountSettings", label: "Account Settings", icon: "settings" },
-    { id: "billing", label: "Billing", icon: "billing" },
-  ],
+  {
+    items: [
+      { id: "overview", label: "Overview", icon: "grid" },
+      { id: "analytics", label: "Analytics", icon: "chart" },
+      { id: "inbox", label: "Inbox", icon: "inbox", count: 3 },
+    ],
+  },
+  {
+    title: "Workspace",
+    items: [
+      { id: "customers", label: "Customers", icon: "users", children: ["All customers", "Segments"] },
+      { id: "projects", label: "Projects", icon: "folder", children: ["Active", "Archived"] },
+      { id: "invoices", label: "Invoices", icon: "invoice" },
+    ],
+  },
+  {
+    title: "Organization",
+    items: [
+      { id: "team", label: "Team", icon: "team" },
+      { id: "integrations", label: "Integrations", icon: "plug" },
+      { id: "settings", label: "Settings", icon: "settings" },
+      { id: "billing", label: "Billing", icon: "billing" },
+    ],
+  },
 ];
 
-const allItems = navGroups.flat().flatMap((item) => [
-  item,
-  ...(item.children || []).map((child) => ({ id: `${item.id}-${child}`, label: child, parent: item.label })),
-]);
+const allItems = navGroups.flatMap((group) =>
+  group.items.flatMap((item) => [
+    item,
+    ...(item.children || []).map((child) => ({ id: `${item.id}-${child}`, label: child, parent: item.label })),
+  ]),
+);
+
+const chartBars = [38, 52, 44, 61, 48, 70, 58, 76, 64, 82, 72, 90];
 
 function Bar({ w, h = 8, className = "" }) {
   return <span className={`skel ${className}`} style={{ width: w, height: h }} />;
@@ -73,15 +83,26 @@ function Bar({ w, h = 8, className = "" }) {
 function Sidebar({ active, onSelect, open, setOpen }) {
   return (
     <aside className="mockSidebar">
-      <div className="mockBrand">
+      <button type="button" className="mockWorkspace">
         <span className="mockBrandMark" />
-        <Bar w="56px" h={9} />
+        <span className="mockWorkspaceText">
+          <Bar w="64px" h={8} className="skelStrong" />
+          <Bar w="40px" h={6} />
+        </span>
+        <Icon name="updown" />
+      </button>
+
+      <div className="mockSearch">
+        <Icon name="search" />
+        <Bar w="50%" h={6} />
+        <kbd>/</kbd>
       </div>
 
       <nav className="mockNav" aria-label="Demo app navigation">
         {navGroups.map((group, gi) => (
           <div className="mockNavGroup" key={gi}>
-            {group.map((item) => {
+            {group.title && <span className="mockNavTitle">{group.title}</span>}
+            {group.items.map((item) => {
               const expanded = open[item.id];
               const isActive = active === item.id || active.startsWith(`${item.id}-`);
               return (
@@ -98,6 +119,7 @@ function Sidebar({ active, onSelect, open, setOpen }) {
                   >
                     <Icon name={item.icon} />
                     <span className="mockNavLabel">{item.label}</span>
+                    {item.count && <span className="mockCount">{item.count}</span>}
                     {item.children && (
                       <span className={`mockChevron${expanded ? " isOpen" : ""}`}>
                         <Icon name="chevron" />
@@ -131,72 +153,92 @@ function Sidebar({ active, onSelect, open, setOpen }) {
         ))}
       </nav>
 
-      <button type="button" className="mockSignOut">
-        <Icon name="signout" />
-        <span className="mockNavLabel">Sign Out</span>
-      </button>
+      <div className="mockUser">
+        <span className="mockAvatar" />
+        <span className="mockWorkspaceText">
+          <Bar w="70px" h={7} className="skelStrong" />
+          <Bar w="90px" h={6} />
+        </span>
+      </div>
     </aside>
   );
 }
 
-function DashboardContent({ pageKey }) {
+function DashboardContent({ pageKey, title }) {
   return (
     <div className="mockContent" key={pageKey}>
-      <span className="mockBadge">
-        <Bar w="44px" h={6} />
-      </span>
-      <Bar w="62%" h={16} className="skelStrong" />
-      <Bar w="22%" h={11} />
+      <div className="mockPageHead">
+        <div className="mockPageTitle">
+          <h3>{title}</h3>
+          <Bar w="180px" h={7} />
+        </div>
+        <span className="mockPill">
+          <Icon name="plus" />
+          <Bar w="44px" h={6} />
+        </span>
+      </div>
 
       <div className="mockStats">
         {[0, 1, 2, 3].map((i) => (
           <div className="mockCard mockStat" key={i} style={{ "--i": i }}>
-            <Bar w="58%" h={7} />
-            <Bar w="34%" h={14} className="skelStrong" />
-            <Bar w="46%" h={6} />
+            <Bar w="52%" h={7} />
+            <div className="mockStatRow">
+              <Bar w="40%" h={14} className="skelStrong" />
+              <span className={`mockDelta${i === 2 ? " isDown" : ""}`}>{i === 2 ? "-2.1%" : `+${(i + 1) * 4.2}%`}</span>
+            </div>
           </div>
         ))}
       </div>
 
       <div className="mockLower">
-        <div className="mockLowerMain">
+        <div className="mockCard mockChart" style={{ "--i": 4 }}>
           <div className="mockRowHead">
-            <Bar w="120px" h={10} className="skelStrong" />
-            <span className="mockPill"><Bar w="70px" h={6} /></span>
+            <Bar w="96px" h={9} className="skelStrong" />
+            <span className="mockSegment">
+              <span className="isOn">12m</span>
+              <span>30d</span>
+              <span>7d</span>
+            </span>
           </div>
-          <div className="mockTiles">
-            {[0, 1, 2].map((i) => (
-              <div className="mockCard mockTile" key={i} style={{ "--i": i + 4 }}>
-                <span className="mockMedia" />
-                <span className="mockTag"><Bar w="22px" h={5} /></span>
-                <Bar w="72%" h={8} />
-                <div className="mockTileFoot">
-                  <span className="mockLiveDot" />
-                  <Bar w="40%" h={6} />
-                  <Icon name="arrow" />
-                </div>
-              </div>
+          <div className="mockBars">
+            {chartBars.map((h, i) => (
+              <span key={i} style={{ "--h": `${h}%`, "--b": i }} />
             ))}
           </div>
         </div>
 
-        <div className="mockLowerSide">
-          <div className="mockRowHead">
-            <Bar w="110px" h={10} className="skelStrong" />
-            <span className="mockPill"><Bar w="60px" h={6} /></span>
-          </div>
-          <div className="mockCard mockProfile" style={{ "--i": 7 }}>
-            <span className="mockMedia mockCover" />
-            <span className="mockAvatarBadge" />
-            <Bar w="62%" h={9} className="skelStrong" />
-            <Bar w="80%" h={6} />
-            <div className="mockTileFoot">
-              <span className="mockLiveDot" />
-              <Bar w="34%" h={6} />
-              <Bar w="28%" h={6} />
+        <div className="mockCard mockActivity" style={{ "--i": 5 }}>
+          <Bar w="80px" h={9} className="skelStrong" />
+          {[0, 1, 2, 3].map((i) => (
+            <div className="mockListRow" key={i}>
+              <span className="mockAvatarSm" />
+              <span className="mockWorkspaceText">
+                <Bar w={`${70 - i * 8}%`} h={7} />
+                <Bar w="40%" h={5} />
+              </span>
             </div>
-          </div>
+          ))}
         </div>
+      </div>
+
+      <div className="mockCard mockTable" style={{ "--i": 6 }}>
+        <div className="mockTableRow isHead">
+          <Bar w="50px" h={6} />
+          <Bar w="40px" h={6} />
+          <Bar w="36px" h={6} />
+          <Bar w="30px" h={6} />
+        </div>
+        {[0, 1, 2].map((i) => (
+          <div className="mockTableRow" key={i}>
+            <span className="mockCell">
+              <span className="mockAvatarSm" />
+              <Bar w={`${90 - i * 14}px`} h={7} className="skelStrong" />
+            </span>
+            <Bar w="60px" h={6} />
+            <span className={`mockStatus${i === 1 ? " isPending" : ""}`}>{i === 1 ? "Pending" : "Active"}</span>
+            <Bar w="38px" h={6} />
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -204,8 +246,8 @@ function DashboardContent({ pageKey }) {
 
 export default function HeroVisual() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [active, setActive] = useState("dashboard");
-  const [open, setOpen] = useState({ buyer: false, supplier: false });
+  const [active, setActive] = useState("overview");
+  const [open, setOpen] = useState({ customers: false, projects: false });
   const [light, setLight] = useState(false);
 
   const current = allItems.find((item) => item.id === active);
@@ -240,7 +282,7 @@ export default function HeroVisual() {
                 <Icon name="panel" />
               </button>
               <span className="mockCrumbs">
-                <span>Home</span>
+                <span>Workspace</span>
                 <span aria-hidden="true">/</span>
                 {current?.parent && (
                   <>
@@ -262,11 +304,11 @@ export default function HeroVisual() {
                 </button>
                 <Icon name={light ? "sun" : "moon"} />
                 <span className="mockDivider" />
-                <span className="mockAvatar" />
+                <Icon name="bell" />
               </span>
             </header>
 
-            <DashboardContent pageKey={active} />
+            <DashboardContent pageKey={active} title={current?.label} />
           </div>
         </div>
       </div>
