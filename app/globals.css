@@ -859,64 +859,170 @@ strong {
   border-top: 1px solid var(--border);
 }
 
-.processList {
-  border-top: 1px solid var(--border);
-}
-
-.processRow {
+.flow {
   display: grid;
-  grid-template-columns: 80px 1fr 1.2fr;
-  gap: 50px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
 
-  padding: 38px 0;
-
-  border-bottom: 1px solid var(--border);
-}
-
-.stepNumber {
-  color: var(--accent);
-
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    monospace;
-
-  font-size: 12px;
-}
-
-.stepTitle h3 {
-  margin: 0;
-  font-size: 24px;
-}
-
-.stepContent p {
-  margin-bottom: 20px;
-}
-
-.stepContent ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-
-  padding: 0;
+  padding: 48px 0 0;
   margin: 0;
 
+  border-top: 1px solid var(--border);
   list-style: none;
 }
 
-.stepContent li {
-  padding: 7px 9px;
+.flowStep {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 
-  border: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 600ms ease var(--flow-delay, 0ms),
+    transform 600ms ease var(--flow-delay, 0ms);
+}
 
+.flowStep.isVisible {
+  opacity: 1;
+  transform: none;
+}
+
+.flowVisual {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 18px;
+}
+
+.flowGlyph {
+  width: 72px;
+  height: 72px;
+  flex: none;
+  overflow: visible;
+}
+
+.flowDot {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.2;
+}
+
+.flowDot.isFilled {
+  fill: var(--text);
+  stroke: var(--text);
+}
+
+.flowWire line {
+  stroke: var(--border-light);
+  stroke-width: 1.2;
+}
+
+.flowSolid {
+  fill: var(--text);
+}
+
+.flowArrow {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  margin: 0 -8px 0 20px;
+
+  background: linear-gradient(90deg, var(--border-light), var(--muted));
+}
+
+.flowArrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -3px;
+
+  width: 7px;
+  height: 7px;
+
+  border-top: 1px solid var(--muted);
+  border-right: 1px solid var(--muted);
+  transform: rotate(45deg);
+}
+
+.flowState {
   color: var(--muted);
-
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    monospace;
-
+  font-family: var(--mono, "SFMono-Regular", Consolas, monospace);
   font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flowStep h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.flowStep p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+@media (max-width: 900px) {
+  .flow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 24px;
+    padding-top: 36px;
+  }
+
+  .flowStep:nth-child(2) .flowArrow {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .process {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .process .sectionHeader {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .flow {
+    gap: 28px 18px;
+    padding-top: 28px;
+  }
+
+  .flowVisual {
+    margin-bottom: 12px;
+  }
+
+  .flowGlyph {
+    width: 48px;
+    height: 48px;
+  }
+
+  .flowArrow {
+    margin-left: 12px;
+  }
+
+  .flowStep h3 {
+    font-size: 18px;
+  }
+
+  .flowStep p {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flowStep {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* -------------------------
@@ -2281,15 +2387,6 @@ main {
     grid-template-columns: 1fr 1fr;
   }
 
-  .processRow {
-    grid-template-columns: 50px 1fr;
-    gap: 20px;
-  }
-
-  .stepContent {
-    grid-column: 2;
-  }
-
   .workFooter {
     flex-direction: column;
     gap: 20px;
@@ -2332,15 +2429,6 @@ main {
 
   .cardNumber {
     margin-bottom: 38px;
-  }
-
-  .processRow {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .stepContent {
-    grid-column: 1;
   }
 
   .fitStatement {

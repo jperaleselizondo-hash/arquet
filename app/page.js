@@ -2,6 +2,7 @@ import Image from "next/image";
 import RevealObserver from "@/components/reveal-observer";
 import HeroVisual from "@/components/hero-visual";
 import ProcessBoard from "@/components/process-board";
+import ProcessFlow from "@/components/process-flow";
 import IndustryGallery from "@/components/industry-gallery";
 import FitGlobe from "@/components/fit-globe";
 import ArquetMark from "@/components/arquet-mark";
@@ -43,54 +44,27 @@ const capabilities = [
 const processSteps = [
   {
     number: "01",
-    title: "Understand the operation",
-    description:
-      "We start by understanding the process, users, information, rules, and problems the software needs to address.",
-    items: [
-      "Process mapping",
-      "User roles",
-      "Workflows",
-      "Business rules",
-      "Data requirements",
-    ],
+    state: "Scattered",
+    title: "Understand",
+    description: "Map the people, rules, and data behind the work.",
   },
   {
     number: "02",
-    title: "Design the system",
-    description:
-      "Before development, we define how the application should work and how its information should be structured.",
-    items: [
-      "System architecture",
-      "Database structure",
-      "Page structure",
-      "User flows",
-      "Permissions and logic",
-    ],
+    state: "Structured",
+    title: "Design",
+    description: "Define the architecture before a line of code.",
   },
   {
     number: "03",
-    title: "Build the application",
-    description:
-      "We turn the architecture into a functional web application using modern development infrastructure.",
-    items: [
-      "WeWeb frontend",
-      "Xano backend",
-      "APIs and integrations",
-      "Authentication",
-      "Responsive interfaces",
-    ],
+    state: "Connected",
+    title: "Build",
+    description: "Wire frontend, backend, and integrations together.",
   },
   {
     number: "04",
-    title: "Test and launch",
-    description:
-      "We test the core workflows, deploy the application, and refine the system based on real-world use.",
-    items: [
-      "Workflow testing",
-      "Quality assurance",
-      "Deployment",
-      "Iteration",
-    ],
+    state: "Running",
+    title: "Launch",
+    description: "Test real workflows, deploy, and refine.",
   },
 ];
 
@@ -321,7 +295,7 @@ export default function Home() {
           <div className="sectionHeader" data-reveal>
             <div>
               <div className="sectionLabel">Our process</div>
-              <h2>From business process to working application.</h2>
+              <h2>Chaos in. System out.</h2>
             </div>
 
             <p>
@@ -330,27 +304,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="processList">
-            {processSteps.map((step) => (
-              <article className="processRow" key={step.number} data-reveal>
-                <div className="stepNumber">{step.number}</div>
-
-                <div className="stepTitle">
-                  <h3>{step.title}</h3>
-                </div>
-
-                <div className="stepContent">
-                  <p>{step.description}</p>
-
-                  <ul>
-                    {step.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ProcessFlow steps={processSteps} />
         </div>
       </section>
 
