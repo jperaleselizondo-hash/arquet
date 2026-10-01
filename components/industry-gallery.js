@@ -2,18 +2,18 @@ import Image from "next/image";
 
 const industries = [
   {
-    src: "/images/industry-distribution.png",
-    alt: "Rows of pallet racking in a dimly lit distribution warehouse",
+    src: "/images/fit-warehouse.jpg",
+    alt: "Long warehouse aisle lined with tall pallet racks of wrapped boxes",
     caption: "Supply & distribution",
   },
   {
-    src: "/images/industry-manufacturing.png",
-    alt: "Close-up of precision CNC machinery on a factory floor",
+    src: "/images/fit-1.avif",
+    alt: "Workers in hard hats on a dim factory floor with cable spools and machinery",
     caption: "Manufacturing",
   },
   {
-    src: "/images/industry-construction.png",
-    alt: "Steel beams of a building under construction at dusk",
+    src: "/images/fit-2.avif",
+    alt: "Orange-lit steel trusses of an industrial structure at night",
     caption: "Construction & engineering",
   },
 ];
