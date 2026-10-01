@@ -1126,9 +1126,9 @@ main {
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 64px 64px;
-  opacity: 0.35;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 80%);
   animation: gridDrift 18s linear infinite;
 }
 
@@ -1139,7 +1139,7 @@ main {
   width: 900px;
   height: 500px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.07), transparent 65%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1), transparent 65%);
   filter: blur(40px);
   animation: glowPulse 7s ease-in-out infinite;
 }
@@ -2520,7 +2520,7 @@ main {
   width: 720px;
   height: 720px;
   color: var(--text);
-  opacity: 0.07;
+  opacity: 0.12;
 }
 
 .heroMark path {
@@ -2533,7 +2533,7 @@ main {
 }
 
 .heroMark {
-  animation: markSpin 120s linear infinite;
+  animation: markSpin 90s linear infinite;
 }
 
 .contact {
