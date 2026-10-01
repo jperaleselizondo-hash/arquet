@@ -25,7 +25,7 @@ html {
 
   --accent: #7cff9b;
 
-  --shell: 1180px;
+  --shell: 1300px;
 }
 
 html,
@@ -360,7 +360,7 @@ strong {
 }
 
 .logicShell {
-  width: min(calc(100% - 48px), 1320px);
+  width: min(calc(100% - 48px), var(--shell));
   margin: 0 auto;
 }
 
@@ -636,7 +636,7 @@ strong {
   }
 
   .logicShell {
-    width: min(calc(100% - 32px), 1320px);
+    width: min(calc(100% - 32px), var(--shell));
   }
 
   .board {
