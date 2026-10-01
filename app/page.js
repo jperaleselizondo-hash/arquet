@@ -1,7 +1,7 @@
 import Image from "next/image";
 import RevealObserver from "@/components/reveal-observer";
 import HeroVisual from "@/components/hero-visual";
-import FlowDiagram from "@/components/flow-diagram";
+import ProcessBoard from "@/components/process-board";
 import IndustryGallery from "@/components/industry-gallery";
 import ArquetMark from "@/components/arquet-mark";
 
@@ -198,34 +198,28 @@ export default function Home() {
       </section>
 
       <section className="logic darkSection">
-        <div className="shell">
-          <div className="sectionLabel lightLabel">What we do</div>
-
-          <div className="logicGrid">
-            <div data-reveal>
+        <div className="logicShell">
+          <div className="logicHeader" data-reveal>
+            <div>
+              <div className="sectionLabel lightLabel">What we do</div>
               <h2>We turn your process into a working system.</h2>
-
-              <FlowDiagram />
             </div>
 
-            <div className="logicContent" data-reveal>
+            <div className="logicIntro">
               <p>
-                Arquet starts with the business logic behind your operation.
+                Every operation runs on rules: who does what, what information
+                is required, what decisions need to be made and what happens
+                next.
               </p>
-
-              <div className="questions">
-                <span>Who does what?</span>
-                <span>What information is required?</span>
-                <span>What happens next?</span>
-                <span>What decisions need to be made?</span>
-                <span>What should each user be able to see and do?</span>
-              </div>
-
               <p>
                 We translate those rules into a structured software application
                 designed around your workflow.
               </p>
             </div>
+          </div>
+
+          <div data-reveal>
+            <ProcessBoard />
           </div>
         </div>
       </section>
