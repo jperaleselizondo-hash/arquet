@@ -217,8 +217,8 @@ strong {
 
   margin-bottom: 30px;
 
-  font-size: clamp(56px, 7.3vw, 104px);
-  line-height: 0.92;
+  font-size: 36px;
+  line-height: 1.1;
   font-weight: 600;
 }
 
@@ -1683,7 +1683,7 @@ main {
   }
 
   .hero h1 {
-    font-size: clamp(48px, 13vw, 76px);
+    font-size: 36px;
   }
 
   .heroText {
@@ -1739,8 +1739,8 @@ main {
   }
 
   .hero h1 {
-    font-size: 48px;
-    line-height: 0.97;
+    font-size: 36px;
+    line-height: 1.1;
   }
 
   .heroActions {
@@ -1936,7 +1936,7 @@ main {
 .coverIcon {
   width: 76px;
   height: 76px;
-  transform: translateY(-50%);
+  margin-top: -38px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1974,6 +1974,7 @@ main {
   .coverIcon {
     width: 60px;
     height: 60px;
+    margin-top: -30px;
   }
 
   .coverMark {
