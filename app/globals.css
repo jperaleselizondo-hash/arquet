@@ -12,18 +12,19 @@ html {
 }
 
 :root {
-  --bg: #090909;
-  --surface: #0d0d0d;
+  --bg: #000000;
+  --surface: #0a0a0a;
   --surface-2: #111111;
 
-  --text: #f2f2f2;
-  --muted: #8b8b8b;
-  --muted-2: #5f5f5f;
+  --text: #ededed;
+  --muted: #a1a1a1;
+  --muted-2: #666666;
 
-  --border: #242424;
-  --border-light: #303030;
+  --border: #1f1f1f;
+  --border-light: #2e2e2e;
 
-  --accent: #c19138;
+  --accent: #ededed;
+  --signal: #3291ff;
 
   --shell: 1100px;
 }
@@ -244,7 +245,8 @@ strong {
 
   width: fit-content;
 
-  padding: 14px 16px;
+  padding: 12px 22px;
+  border-radius: 999px;
 
   background: var(--text);
   color: var(--bg);
@@ -265,8 +267,8 @@ strong {
 }
 
 .primaryButton:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: #cfcfcf;
+  border-color: #cfcfcf;
 }
 
 .textLink {
@@ -487,7 +489,7 @@ strong {
 }
 
 .bTrail {
-  stroke: rgba(193, 145, 56, 0.45);
+  stroke: rgba(50, 145, 255, 0.4);
   stroke-width: 1.4;
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
@@ -495,11 +497,11 @@ strong {
 }
 
 .bComet {
-  stroke: var(--accent);
+  stroke: var(--signal);
   stroke-width: 3.5;
   stroke-dasharray: 6 120;
   stroke-dashoffset: 6;
-  filter: drop-shadow(0 0 6px rgba(193, 145, 56, 0.9));
+  filter: drop-shadow(0 0 6px rgba(50, 145, 255, 0.9));
   animation: boardComet 700ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -565,8 +567,8 @@ strong {
 
 .bNode.active .bShape {
   stroke: var(--accent);
-  fill: #0c0f19;
-  filter: drop-shadow(0 0 10px rgba(193, 145, 56, 0.25));
+  fill: #141414;
+  filter: drop-shadow(0 0 10px rgba(237, 237, 237, 0.25));
 }
 
 .bNode.active .bLabel {
@@ -591,16 +593,16 @@ strong {
 
 .bStatus rect {
   fill: #050505;
-  stroke: rgba(193, 145, 56, 0.5);
+  stroke: rgba(50, 145, 255, 0.45);
 }
 
 .bStatus circle {
-  fill: var(--accent);
+  fill: var(--signal);
   animation: livePulse 1.2s ease-in-out infinite;
 }
 
 .bStatus text {
-  fill: var(--accent);
+  fill: var(--signal);
   font-size: 11px;
 }
 
@@ -716,11 +718,11 @@ strong {
   .mNode.active .mMarker {
     border-color: var(--accent);
     background: var(--accent);
-    box-shadow: 0 0 12px rgba(193, 145, 56, 0.6);
+    box-shadow: 0 0 12px rgba(237, 237, 237, 0.6);
   }
 
   .mNode.active .mTag {
-    border-color: rgba(193, 145, 56, 0.5);
+    border-color: rgba(237, 237, 237, 0.5);
     color: var(--accent);
     text-transform: none;
     letter-spacing: 0;
@@ -922,7 +924,47 @@ strong {
    ------------------------- */
 
 .fit {
+  position: relative;
+  overflow: hidden;
   padding: 120px 0;
+  isolation: isolate;
+}
+
+.fit > .shell {
+  position: relative;
+  z-index: 1;
+}
+
+.fitGlobe {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: min(1300px, 160vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  animation: globeIn 1.6s ease-out both;
+}
+
+.fitGlobe canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.45;
+}
+
+@keyframes globeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .fitGrid {
@@ -1124,9 +1166,9 @@ main {
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 64px 64px;
-  opacity: 0.35;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 80%);
   animation: gridDrift 18s linear infinite;
 }
 
@@ -1137,7 +1179,7 @@ main {
   width: 900px;
   height: 500px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(193, 145, 56, 0.03), transparent 65%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1), transparent 65%);
   filter: blur(40px);
   animation: glowPulse 7s ease-in-out infinite;
 }
@@ -1205,6 +1247,8 @@ main {
 .heroVisual {
   margin-top: 72px;
   perspective: 1600px;
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
   opacity: 0;
   animation: visualIn 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) 450ms forwards;
 }
@@ -1288,10 +1332,10 @@ main {
 }
 
 .mockApp {
-  --m-bg: #0b0b0b;
-  --m-side: #0e0e0e;
-  --m-card: #121212;
-  --m-line: #222222;
+  --m-bg: #0a0a0a;
+  --m-side: #0d0d0d;
+  --m-card: #141414;
+  --m-line: #1f1f1f;
   --m-skel: #1d1d1d;
   --m-skel-strong: #2a2a2a;
   --m-text: #d6d6d6;
@@ -1974,7 +2018,24 @@ main {
    ------------------------- */
 
 .problem .split {
-  row-gap: 72px;
+  grid-template-columns: 1fr 1.1fr;
+  column-gap: 56px;
+  row-gap: 40px;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.problem .split .sectionLabel {
+  margin-bottom: 18px;
+}
+
+.problem .largeBody p {
+  margin-bottom: 16px;
+}
+
+.problem .largeBody strong {
+  margin-top: 24px;
+  padding-top: 16px;
 }
 
 .problemImage {
@@ -1992,7 +2053,10 @@ main {
 
 @media (max-width: 900px) {
   .problem .split {
-    row-gap: 48px;
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 
   .problemImage {
@@ -2496,7 +2560,7 @@ main {
   width: 720px;
   height: 720px;
   color: var(--text);
-  opacity: 0.07;
+  opacity: 0.12;
 }
 
 .heroMark path {
@@ -2509,7 +2573,7 @@ main {
 }
 
 .heroMark {
-  animation: markSpin 120s linear infinite;
+  animation: markSpin 90s linear infinite;
 }
 
 .contact {
@@ -2735,8 +2799,8 @@ main {
 }
 
 .dmTable.isTouched {
-  border-color: rgba(193, 145, 56, 0.4);
-  box-shadow: 0 0 0 3px rgba(193, 145, 56, 0.05);
+  border-color: rgba(237, 237, 237, 0.4);
+  box-shadow: 0 0 0 3px rgba(237, 237, 237, 0.05);
 }
 
 .dmTableHead {
@@ -2814,7 +2878,7 @@ main {
 
 .dmMethod {
   padding: 2px 6px;
-  border: 1px solid rgba(193, 145, 56, 0.35);
+  border: 1px solid rgba(237, 237, 237, 0.35);
   border-radius: 4px;
   font-size: 10px;
   letter-spacing: 0.06em;
@@ -2921,8 +2985,8 @@ main {
 }
 
 .dmNode.is-active {
-  border-color: rgba(193, 145, 56, 0.55);
-  box-shadow: 0 0 0 4px rgba(193, 145, 56, 0.06);
+  border-color: rgba(237, 237, 237, 0.55);
+  box-shadow: 0 0 0 4px rgba(237, 237, 237, 0.06);
 }
 
 .dmNodeHead {
@@ -3025,7 +3089,7 @@ main {
 
 .dmReturn code {
   padding: 1px 6px;
-  border: 1px solid rgba(193, 145, 56, 0.3);
+  border: 1px solid rgba(237, 237, 237, 0.3);
   border-radius: 4px;
   font-size: 10px;
   color: var(--accent);
