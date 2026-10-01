@@ -1225,7 +1225,7 @@ main {
   background: var(--surface);
   box-shadow:
     0 40px 120px -30px rgba(0, 0, 0, 0.9),
-    0 0 0 1px rgba(193, 145, 56, 0.04);
+    0 0 0 1px rgba(255, 255, 255, 0.04);
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 12px;
   overflow: hidden;
@@ -1263,7 +1263,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: var(--accent);
+  color: var(--foreground);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1273,17 +1273,17 @@ main {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 0 rgba(193, 145, 56, 0.6);
+  background: var(--foreground);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
   animation: livePing 1.8s ease-out infinite;
 }
 
 @keyframes livePing {
   0% {
-    box-shadow: 0 0 0 0 rgba(193, 145, 56, 0.6);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
   }
   100% {
-    box-shadow: 0 0 0 8px rgba(193, 145, 56, 0);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
   }
 }
 
@@ -1364,7 +1364,7 @@ main {
 .mockBrandMark {
   width: 14px;
   height: 14px;
-  border: 1.5px solid var(--accent);
+  border: 1.5px solid var(--foreground);
   border-radius: 3px;
 }
 
@@ -1387,7 +1387,7 @@ main {
   width: 20px;
   height: 20px;
   border-radius: 5px;
-  background: rgba(193, 145, 56, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .mockWorkspaceText {
@@ -1436,8 +1436,8 @@ main {
 .mockCount {
   padding: 1px 6px;
   border-radius: 999px;
-  background: rgba(193, 145, 56, 0.12);
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--foreground);
   font-size: 9.5px;
 }
 
@@ -1507,7 +1507,7 @@ main {
 .mockNavItem.isActive {
   background: var(--m-hover);
   color: var(--m-text);
-  box-shadow: inset 2px 0 0 var(--accent);
+  box-shadow: inset 2px 0 0 var(--foreground);
 }
 
 .mockNavItem:focus-visible,
@@ -1515,7 +1515,7 @@ main {
 .mockSignOut:focus-visible,
 .mockToggle:focus-visible,
 .mockSwitch:focus-visible {
-  outline: 1px solid var(--accent);
+  outline: 1px solid var(--foreground);
   outline-offset: 1px;
 }
 
@@ -1557,7 +1557,7 @@ main {
 }
 
 .mockSubItem.isActive {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .mockSignOut {
@@ -1597,7 +1597,7 @@ main {
   justify-content: center;
   width: 28px;
   height: 28px;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--foreground);
   border-radius: 6px;
   background: transparent;
   color: var(--m-text);
@@ -1718,9 +1718,9 @@ main {
 .mockBadge {
   display: inline-flex;
   padding: 6px 8px;
-  border: 1px solid rgba(193, 145, 56, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 6px;
-  background: rgba(193, 145, 56, 0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .mockCard {
@@ -1826,7 +1826,7 @@ main {
 
 .mockDelta {
   font-size: 9.5px;
-  color: var(--accent);
+  color: var(--foreground);
 }
 
 .mockDelta.isDown {
@@ -1882,7 +1882,7 @@ main {
 
 .mockBars span:last-child,
 .mockBars span:hover {
-  background: var(--accent);
+  background: var(--foreground);
 }
 
 @keyframes barGrow {
@@ -1935,8 +1935,8 @@ main {
   justify-self: start;
   padding: 2px 7px;
   border-radius: 999px;
-  background: rgba(193, 145, 56, 0.1);
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--foreground);
   font-size: 9.5px;
 }
 
