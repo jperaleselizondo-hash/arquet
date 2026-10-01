@@ -3,6 +3,7 @@ import RevealObserver from "@/components/reveal-observer";
 import HeroVisual from "@/components/hero-visual";
 import ProcessBoard from "@/components/process-board";
 import IndustryGallery from "@/components/industry-gallery";
+import FitGlobe from "@/components/fit-globe";
 import ArquetMark from "@/components/arquet-mark";
 import DataModelBoard from "@/components/data-model-board";
 
@@ -354,6 +355,7 @@ export default function Home() {
       </section>
 
       <section className="fit darkSection">
+        <FitGlobe />
         <div className="shell">
           <div className="sectionLabel lightLabel">Who it is for</div>
 

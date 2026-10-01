@@ -924,7 +924,46 @@ strong {
    ------------------------- */
 
 .fit {
-  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 360px;
+  isolation: isolate;
+}
+
+.fit > .shell {
+  position: relative;
+  z-index: 1;
+}
+
+.fitGlobe {
+  position: absolute;
+  left: 50%;
+  bottom: -560px;
+  z-index: 0;
+  width: min(1100px, 140vw);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 80%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 80%);
+  animation: globeIn 1.6s ease-out both;
+}
+
+.fitGlobe canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes globeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .fitGrid {
