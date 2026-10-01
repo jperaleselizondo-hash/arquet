@@ -2,96 +2,77 @@ import Image from "next/image";
 import RevealObserver from "@/components/reveal-observer";
 import HeroVisual from "@/components/hero-visual";
 import ProcessBoard from "@/components/process-board";
-import IndustryGallery from "@/components/industry-gallery";
+import ProcessFlow from "@/components/process-flow";
 import FitGlobe from "@/components/fit-globe";
 import ArquetMark from "@/components/arquet-mark";
 import DataModelBoard from "@/components/data-model-board";
+import Chain from "@/components/chain";
+
+const CONTACT_HREF =
+  "mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry";
 
 const capabilities = [
   {
-    title: "Internal Operations Systems",
-    description:
-      "Bring workflows, records, responsibilities, and operational information into one application.",
+    title: "Internal operations",
+    description: "Workflows, records, and responsibilities in one place.",
   },
   {
-    title: "Customer & Supplier Portals",
-    description:
-      "Give customers, suppliers, or partners a structured place to exchange information, documents, requests, and updates.",
+    title: "Customer & supplier portals",
+    description: "One structured place to exchange requests and documents.",
   },
   {
-    title: "RFQ & Quotation Systems",
-    description:
-      "Manage requests, quotations, responses, documents, statuses, and follow-up through a defined workflow.",
+    title: "RFQ & quotation systems",
+    description: "Requests, quotes, and follow-up through a defined flow.",
   },
   {
-    title: "Workflow & Approval Tools",
-    description:
-      "Turn multi-step internal processes into structured workflows with roles, permissions, statuses, and approvals.",
+    title: "Workflow & approval",
+    description: "Multi-step processes with roles, statuses, and sign-off.",
   },
   {
-    title: "Custom CRM Systems",
-    description:
-      "Build sales and account-management workflows around the way your company actually sells.",
+    title: "Custom CRM",
+    description: "Built around the way your company actually sells.",
   },
   {
-    title: "Dashboards & Management Tools",
-    description:
-      "Give teams a clear interface for managing the information and processes that matter to their operation.",
+    title: "Dashboards",
+    description: "A clear view of the information that runs the operation.",
   },
 ];
 
 const processSteps = [
   {
     number: "01",
-    title: "Understand the operation",
-    description:
-      "We start by understanding the process, users, information, rules, and problems the software needs to address.",
-    items: [
-      "Process mapping",
-      "User roles",
-      "Workflows",
-      "Business rules",
-      "Data requirements",
-    ],
+    state: "Scattered",
+    title: "Understand",
+    description: "Map people, rules, and data.",
   },
   {
     number: "02",
-    title: "Design the system",
-    description:
-      "Before development, we define how the application should work and how its information should be structured.",
-    items: [
-      "System architecture",
-      "Database structure",
-      "Page structure",
-      "User flows",
-      "Permissions and logic",
-    ],
+    state: "Structured",
+    title: "Structure",
+    description: "Define the model before code.",
   },
   {
     number: "03",
-    title: "Build the application",
-    description:
-      "We turn the architecture into a functional web application using modern development infrastructure.",
-    items: [
-      "WeWeb frontend",
-      "Xano backend",
-      "APIs and integrations",
-      "Authentication",
-      "Responsive interfaces",
-    ],
+    state: "Connected",
+    title: "Build",
+    description: "Wire interface, backend, and data.",
   },
   {
     number: "04",
-    title: "Test and launch",
-    description:
-      "We test the core workflows, deploy the application, and refine the system based on real-world use.",
-    items: [
-      "Workflow testing",
-      "Quality assurance",
-      "Deployment",
-      "Iteration",
-    ],
+    state: "Running",
+    title: "Test",
+    description: "Run real workflows, then refine.",
   },
+];
+
+
+const industries = [
+  "Supply & distribution",
+  "Manufacturing",
+  "Construction & engineering",
+  "B2B services",
+  "Professional services",
+  "Agencies",
 ];
 
 export default function Home() {
@@ -109,7 +90,7 @@ export default function Home() {
         <nav className="navLinks">
           <a href="#work">What we build</a>
           <a href="#process">Process</a>
-          <a className="navCta" href="mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry">
+          <a className="navCta" href={CONTACT_HREF}>
             Discuss your project
           </a>
         </nav>
@@ -152,13 +133,12 @@ export default function Home() {
         </h1>
 
         <p className="heroText intro" style={{ "--d": "220ms" }}>
-          We design and build custom operational software for B2B companies
-          that have outgrown spreadsheets, disconnected tools, and manual
-          workflows.
+          Custom operational software for B2B companies that have outgrown
+          spreadsheets and disconnected tools.
         </p>
 
         <div className="heroActions intro" style={{ "--d": "340ms" }}>
-          <a className="primaryButton" href="mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry">
+          <a className="primaryButton" href={CONTACT_HREF}>
             Discuss your project
             <span>→</span>
           </a>
@@ -171,50 +151,10 @@ export default function Home() {
         <HeroVisual />
 
         <div className="heroFooter">
-          <span>Where business logic becomes software.</span>
-        </div>
-      </section>
-
-      <section className="problem sectionBorder">
-        <div className="shell split">
-          <div data-reveal>
-            <div className="sectionLabel">The problem</div>
-
-            <h2>Your process should not depend on workarounds.</h2>
-          </div>
-
-          <div className="largeBody" data-reveal>
-            <p>
-              Many businesses reach a point where their operations become too
-              complex for the tools holding them together.
-            </p>
-
-            <p>
-              Information lives across spreadsheets. Requests arrive through
-              email and WhatsApp. Documents move manually. Important steps
-              depend on someone remembering what happens next.
-            </p>
-
-            <p>
-              And generic software does not always match the way the company
-              actually operates.
-            </p>
-
-            <strong>That is where custom software starts to make sense.</strong>
-          </div>
-
-          <figure className="problemImage" data-reveal>
-            <Image
-              src="/images/problem-desk.png"
-              alt="A desk buried under printed spreadsheets, invoices, and sticky notes"
-              fill
-              sizes="(max-width: 900px) 100vw, 1200px"
-            />
-            <figcaption>
-              <span>status:</span> 14 spreadsheets, 3 inboxes, 0 source of
-              truth
-            </figcaption>
-          </figure>
+          <Chain
+            label="How Arquet works"
+            items={["Process", "Rules", "System"]}
+          />
         </div>
       </section>
 
@@ -226,17 +166,11 @@ export default function Home() {
               <h2>We turn your process into a working system.</h2>
             </div>
 
-            <div className="logicIntro">
-              <p>
-                Every operation runs on rules: who does what, what information
-                is required, what decisions need to be made and what happens
-                next.
-              </p>
-              <p>
-                We translate those rules into a structured software application
-                designed around your workflow.
-              </p>
-            </div>
+            <Chain
+              className="chainCenter"
+              label="From process to system"
+              items={["Process", "Rules", "Roles", "Decisions", "System"]}
+            />
           </div>
 
           <div data-reveal>
@@ -245,48 +179,34 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="work" className="work sectionBorder">
+      <section id="work" className="work sectionBorder vvSection">
         <div className="shell">
-          <div className="sectionHeader" data-reveal>
-            <div>
-              <div className="sectionLabel">What we build</div>
-              <h2>Operational software for real business workflows.</h2>
-            </div>
-
-            <p>
-              The system is designed around the job that needs to get done, not
-              around a generic software template.
-            </p>
+          <div className="vvHead" data-reveal>
+            <div className="sectionLabel">What we build</div>
+            <h2>Operational software for real business workflows.</h2>
           </div>
 
-          <div className="capabilityGrid">
+          <ol className="buildList">
             {capabilities.map((capability, index) => (
-              <article
-                className="capabilityCard"
+              <li
+                className="buildItem"
                 key={capability.title}
                 data-reveal
                 style={{ "--delay": `${(index % 3) * 90}ms` }}
               >
-                <span className="cardNumber">
+                <span className="buildNum">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-
                 <h3>{capability.title}</h3>
-
                 <p>{capability.description}</p>
-              </article>
+              </li>
             ))}
-          </div>
+          </ol>
 
-          <div className="workFooter">
-            <p>
-              Have a different operational problem? If the workflow can be
-              clearly defined, we can determine whether it can be turned into
-              software.
-            </p>
-
-            <a href="mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry">
-              Tell us what you need <span>→</span>
+          <div className="buildFoot">
+            <p>Something else? If the workflow can be defined, it can be built.</p>
+            <a href={CONTACT_HREF}>
+              Tell us what you need <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
@@ -294,20 +214,20 @@ export default function Home() {
 
       <section className="dataModel darkSection">
         <div className="logicShell">
-          <div className="dmHeader" data-reveal>
-            <div>
+          <div className="dmHead" data-reveal>
+            <div className="vvHead">
               <div className="sectionLabel lightLabel">Backend architecture</div>
-              <h2>Structure the business before building the application.</h2>
+              <h2>Good software starts with a good data model.</h2>
+              <p className="vvLede">
+                The structure of the data should follow the structure of the
+                business.
+              </p>
             </div>
 
-            <div className="dmIntro">
-              <p>
-                A good application starts with a well-structured data model.
-                Before designing screens, we define the core entities, how they
-                relate and the rules that support the workflow.
-              </p>
-              <p>The structure of the data should follow the structure of the business.</p>
-            </div>
+            <Chain
+              label="From business to application"
+              items={["Business", "Entities", "Relationships", "Rules", "Application"]}
+            />
           </div>
 
           <div data-reveal>
@@ -318,120 +238,67 @@ export default function Home() {
 
       <section id="process" className="process">
         <div className="shell">
-          <div className="sectionHeader" data-reveal>
-            <div>
-              <div className="sectionLabel">Our process</div>
-              <h2>From business process to working application.</h2>
-            </div>
-
-            <p>
-              We define the system before we build it, so development follows a
-              clear operational model.
-            </p>
+          <div className="vvHead processHead" data-reveal>
+            <div className="sectionLabel">Our process</div>
+            <h2>Chaos in. System out.</h2>
           </div>
 
-          <div className="processList">
-            {processSteps.map((step) => (
-              <article className="processRow" key={step.number} data-reveal>
-                <div className="stepNumber">{step.number}</div>
-
-                <div className="stepTitle">
-                  <h3>{step.title}</h3>
-                </div>
-
-                <div className="stepContent">
-                  <p>{step.description}</p>
-
-                  <ul>
-                    {step.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ProcessFlow steps={processSteps} />
         </div>
       </section>
 
       <section className="fit darkSection">
         <FitGlobe />
-        <div className="shell">
-          <div className="sectionLabel lightLabel">Who it is for</div>
+        <div className="shell fitLayout">
+          <div className="vvHead" data-reveal>
+            <div className="sectionLabel lightLabel">Who it is for</div>
+            <h2>Built for operationally complex B2B companies.</h2>
 
-          <div className="fitGrid">
-            <div className="fitCopy" data-reveal>
-              <h2>
-                Built for operationally
-                <br />
-                complex B2B companies.
-              </h2>
-
-              <p>
-                Arquet is particularly suited to businesses where multiple
-                people, documents, decisions, and steps have to come together
-                before work gets done.
-              </p>
-
-              <div className="industries">
-                <span>Industrial supply & distribution</span>
-                <span>Manufacturing</span>
-                <span>Construction & engineering</span>
-                <span>B2B services</span>
-                <span>Professional services</span>
-                <span>Agencies</span>
-              </div>
-            </div>
-
-            <IndustryGallery />
-          </div>
-
-          <div className="fitStatement" data-reveal>
-            If your operation depends heavily on{" "}
-            <strong>Excel, email, WhatsApp, manual follow-up,</strong> or several
-            disconnected tools, there may be a better way to structure it.
+            <ul className="fitList">
+              {industries.map((industry) => (
+                <li key={industry}>{industry}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      <section className="custom sectionBorder">
-        <div className="shell split" data-reveal>
-          <div>
+      <section className="custom sectionBorder vvSection">
+        <div className="shell vvSplit">
+          <div className="vvHead" data-reveal>
             <div className="sectionLabel">Why custom software</div>
-
             <h2>
               Your operation does not always fit inside someone else&apos;s
               software.
             </h2>
+            <p className="vvLede">
+              Instead of adapting the operation to the software, the software
+              adapts to the operation.
+            </p>
           </div>
 
-          <div className="largeBody">
-            <p>
-              Off-the-shelf software is built around someone else&apos;s
-              assumptions.
-            </p>
+          <div className="compare" data-reveal>
+            <div className="compareCol">
+              <span className="vvTag">Off the shelf</span>
+              <ol className="compareSteps">
+                <li>Your process</li>
+                <li>Generic software</li>
+                <li className="isWorkaround">Workarounds</li>
+              </ol>
+            </div>
 
-            <p>
-              Custom software makes sense when your workflow is specific enough
-              that forcing it into generic tools creates unnecessary
-              complexity.
-            </p>
-
-            <p>
-              We help formalize that workflow and build the software around it.
-            </p>
-
-            <strong>
-              Instead of adapting your operation to the software, the software
-              adapts to the operation.
-            </strong>
+            <div className="compareCol">
+              <span className="vvTag">Custom</span>
+              <ol className="compareSteps">
+                <li>Your process</li>
+                <li className="isFit">Custom software</li>
+              </ol>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="contact" className="contact">
-        <ArquetMark className="contactWatermark" strokeWidth={4} />
-
         <div className="shell contactInner" data-reveal>
           <ArquetMark className="contactMark" strokeWidth={30} />
 
@@ -440,15 +307,11 @@ export default function Home() {
           <h2>Tell us how your business works today.</h2>
 
           <p>
-            Come to us with a process, a recurring operational problem, an
-            existing spreadsheet, or simply something your current software
-            cannot do.
+            A process, a spreadsheet, or something your current software cannot
+            do is enough to start.
           </p>
 
-          <a
-            className="primaryButton"
-            href="mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry"
-          >
+          <a className="primaryButton" href={CONTACT_HREF}>
             Discuss your project
             <span>→</span>
           </a>
