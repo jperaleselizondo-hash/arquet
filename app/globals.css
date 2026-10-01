@@ -638,7 +638,7 @@ strong {
   }
 
   .logicShell {
-    width: min(calc(100% - 32px), var(--shell));
+  width: min(calc(100% - 52px), var(--shell));
   }
 
   .board {
@@ -2232,7 +2232,7 @@ main {
 
 @media (max-width: 900px) {
   .shell {
-    width: min(calc(100% - 32px), var(--shell));
+  width: min(calc(100% - 52px), var(--shell));
   }
 
   .nav {
