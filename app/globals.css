@@ -114,8 +114,8 @@ h3 {
 
 h2 {
   margin-bottom: 0;
-  font-size: clamp(38px, 5vw, 64px);
-  line-height: 0.98;
+  font-size: 38px;
+  line-height: 1.1;
   font-weight: 600;
 }
 
@@ -217,7 +217,7 @@ strong {
 
   margin-bottom: 30px;
 
-  font-size: 36px;
+  font-size: 38px;
   line-height: 1.1;
   font-weight: 600;
 }
@@ -1002,7 +1002,7 @@ strong {
 
   color: #090909;
 
-  font-size: clamp(48px, 6vw, 78px);
+  font-size: 38px;
 }
 
 .contactInner p {
@@ -1692,7 +1692,7 @@ main {
   }
 
   .hero h1 {
-    font-size: 36px;
+    font-size: 38px;
   }
 
   .heroText {
@@ -1748,7 +1748,7 @@ main {
   }
 
   .hero h1 {
-    font-size: 36px;
+    font-size: 38px;
     line-height: 1.1;
   }
 
@@ -1759,8 +1759,8 @@ main {
   }
 
   h2 {
-    font-size: 39px;
-    line-height: 1;
+    font-size: 38px;
+    line-height: 1.1;
   }
 
   .capabilityGrid {
@@ -1789,7 +1789,7 @@ main {
   }
 
   .contactInner h2 {
-    font-size: 44px;
+    font-size: 38px;
   }
 
   .footerInner {
