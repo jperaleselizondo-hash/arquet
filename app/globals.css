@@ -3243,3 +3243,473 @@ main {
     opacity: 1;
   }
 }
+
+/* =========================
+   CLARITY PASS
+   One idea, one relationship per section.
+   ========================= */
+
+:root {
+  --signal: #45c46a;
+  --mono-font: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.vvSection {
+  padding: 128px 0;
+}
+
+.vvHead {
+  max-width: 620px;
+}
+
+.vvHead .sectionLabel {
+  margin-bottom: 28px;
+}
+
+.vvHead h2 {
+  text-wrap: balance;
+}
+
+.vvLede {
+  max-width: 440px;
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.vvTag {
+  font-family: var(--mono-font);
+  color: var(--muted-2);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vvSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 96px;
+  align-items: center;
+}
+
+/* Chain: A → B → C */
+
+.chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--mono-font);
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chainItem {
+  display: flex;
+  align-items: center;
+}
+
+.chainItem:not(:last-child)::after {
+  content: "→" / "";
+  margin: 0 14px;
+  color: var(--muted-2);
+}
+
+.chainItem.isEnd {
+  color: var(--text);
+}
+
+.chainItem.isEnd::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+}
+
+.chainCenter {
+  justify-content: center;
+}
+
+.heroFooter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Problem: five sources converge into friction */
+
+.problem .vvSplit {
+  align-items: center;
+}
+
+.friction {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.frictionSources {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.frictionSources li {
+  padding: 14px 4px;
+  margin-right: -1px;
+  border: 1px solid var(--border-light);
+  color: var(--muted);
+  font-family: var(--mono-font);
+  font-size: 12px;
+  text-align: center;
+}
+
+.frictionLines {
+  display: block;
+  width: 100%;
+  height: 88px;
+}
+
+.frictionLines line {
+  stroke: var(--border-light);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.frictionResult {
+  align-self: center;
+  padding: 16px 32px;
+  border: 1px solid var(--text);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.frictionNote {
+  align-self: center;
+  margin-top: 16px;
+  color: var(--muted-2);
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* What we build: hairline index, no cards */
+
+.buildList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 72px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+.buildItem {
+  padding: 28px 32px 40px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.buildItem:not(:nth-child(3n + 1)) {
+  padding-left: 32px;
+  border-left: 1px solid var(--border);
+}
+
+.buildNum {
+  color: var(--muted-2);
+  font-family: var(--mono-font);
+  font-size: 12px;
+}
+
+.buildItem h3 {
+  margin: 48px 0 10px;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.buildItem p {
+  max-width: 260px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.buildFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  margin-top: 32px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.buildFoot p {
+  margin: 0;
+}
+
+.buildFoot a {
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* Data model header */
+
+.dmHead {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-bottom: 56px;
+}
+
+.processHead {
+  margin-bottom: 56px;
+}
+
+/* Who it is for: list + fit equation */
+
+.fitLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: 96px;
+  align-items: center;
+}
+
+.fitList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border-light);
+}
+
+.fitList li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 15px;
+}
+
+.equation {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 32px;
+  border: 1px solid var(--border-light);
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.eqTerms {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eqTerms li,
+.eqResult {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: baseline;
+}
+
+.eqTerms li {
+  padding: 12px 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.eqOp {
+  color: var(--muted-2);
+  font-family: var(--mono-font);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.eqResult {
+  margin-top: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--text);
+  color: var(--text);
+  font-family: var(--mono-font);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Why custom: two paths compared */
+
+.compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--border-light);
+}
+
+.compareCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px;
+}
+
+.compareCol + .compareCol {
+  border-left: 1px solid var(--border-light);
+}
+
+.compareSteps {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compareSteps li {
+  position: relative;
+  padding: 10px 14px;
+  border: 1px solid var(--border-light);
+  font-family: var(--mono-font);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.compareSteps li:not(:last-child) {
+  margin-bottom: 36px;
+}
+
+.compareSteps li:not(:last-child)::after {
+  content: "↓" / "";
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 14px;
+  color: var(--muted-2);
+}
+
+.compareSteps .isWorkaround {
+  border-style: dashed;
+  color: var(--muted-2);
+}
+
+.compareSteps .isFit {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+@media (max-width: 900px) {
+  .vvSection {
+    padding: 88px 0;
+  }
+
+  .vvSplit,
+  .fitLayout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .buildList {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 40px;
+  }
+
+  .buildItem,
+  .buildItem:not(:nth-child(3n + 1)) {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    column-gap: 12px;
+    padding: 20px 0;
+    border-left: 0;
+  }
+
+  .buildNum {
+    grid-row: span 2;
+    padding-top: 4px;
+  }
+
+  .buildItem h3 {
+    margin: 0 0 6px;
+    font-size: 19px;
+  }
+
+  .buildFoot {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dmHead,
+  .processHead {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 620px) {
+  .vvLede {
+    font-size: 16px;
+  }
+
+  .chain {
+    font-size: 11px;
+  }
+
+  .chainItem:not(:last-child)::after {
+    margin: 0 8px;
+  }
+
+  .frictionSources li {
+    padding: 12px 2px;
+    font-size: 10px;
+  }
+
+  .frictionLines {
+    height: 64px;
+  }
+
+  .frictionResult {
+    font-size: 22px;
+  }
+
+  .fitList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .equation {
+    padding: 24px;
+  }
+
+  .eqTerms li {
+    font-size: 18px;
+  }
+
+  .compareCol {
+    padding: 20px 14px;
+  }
+
+  .compareSteps li {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .compareSteps li:not(:last-child)::after {
+    left: 10px;
+  }
+}
