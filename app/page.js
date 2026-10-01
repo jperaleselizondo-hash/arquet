@@ -4,6 +4,7 @@ import HeroVisual from "@/components/hero-visual";
 import ProcessBoard from "@/components/process-board";
 import IndustryGallery from "@/components/industry-gallery";
 import ArquetMark from "@/components/arquet-mark";
+import DataModelBoard from "@/components/data-model-board";
 
 const capabilities = [
   {
@@ -286,6 +287,30 @@ export default function Home() {
             <a href="#contact">
               Tell us what you need <span>→</span>
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="dataModel darkSection">
+        <div className="logicShell">
+          <div className="dmHeader" data-reveal>
+            <div>
+              <div className="sectionLabel lightLabel">Backend architecture</div>
+              <h2>Structure the business before building the application.</h2>
+            </div>
+
+            <div className="dmIntro">
+              <p>
+                A good application starts with a well-structured data model.
+                Before designing screens, we define the core entities, how they
+                relate and the rules that support the workflow.
+              </p>
+              <p>The structure of the data should follow the structure of the business.</p>
+            </div>
+          </div>
+
+          <div data-reveal>
+            <DataModelBoard />
           </div>
         </div>
       </section>

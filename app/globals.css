@@ -2143,3 +2143,522 @@ main {
     scroll-behavior: auto !important;
   }
 }
+
+/* -------------------------
+   DATA MODEL / BACKEND ARCHITECTURE
+   ------------------------- */
+
+.dataModel {
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+.dmHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+
+.dmHeader h2 {
+  max-width: 560px;
+  text-wrap: balance;
+}
+
+.dmIntro {
+  max-width: 500px;
+  justify-self: end;
+  text-wrap: pretty;
+}
+
+.dmIntro p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.dmIntro p:last-child {
+  margin-bottom: 0;
+  color: var(--text);
+}
+
+.dmBoard {
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.dmChrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.dmChromeTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dmDots {
+  display: flex;
+  gap: 6px;
+}
+
+.dmDots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+}
+
+.dmChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dmChips li {
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+}
+
+.dmChips li:nth-child(4) {
+  color: var(--accent);
+  border-color: rgba(124, 255, 155, 0.3);
+}
+
+.dmBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+}
+
+.dmCanvas {
+  padding: 20px 24px 28px;
+  border-right: 1px solid var(--border);
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dmCanvasLabel,
+.dmPanelHead {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+}
+
+.dmCanvasLabel {
+  margin-bottom: 12px;
+}
+
+.dmStage {
+  position: relative;
+  aspect-ratio: 1000 / 540;
+}
+
+.dmLinks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.dmLink {
+  fill: none;
+  stroke: #3a3a3a;
+  stroke-width: 1;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+}
+
+.isVisible .dmLink {
+  animation: dmDraw 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: calc(400ms + var(--i) * 140ms);
+}
+
+@keyframes dmDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.dmPulse {
+  fill: var(--accent);
+  opacity: 0;
+  filter: drop-shadow(0 0 4px rgba(124, 255, 155, 0.8));
+}
+
+.isVisible .dmPulse {
+  opacity: 0.9;
+  transition: opacity 600ms ease 1.8s;
+}
+
+.dmRelLabel {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 600ms ease 1.6s;
+}
+
+.isVisible .dmRelLabel {
+  opacity: 1;
+}
+
+.dmTable {
+  position: absolute;
+  width: 28%;
+  z-index: 2;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--surface-2);
+  font-family: var(--mono);
+  font-size: 12px;
+  overflow: hidden;
+  opacity: 0;
+  translate: 0 10px;
+  transition:
+    opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--i) * 90ms),
+    translate 700ms cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--i) * 90ms),
+    border-color 400ms ease,
+    box-shadow 400ms ease;
+}
+
+.isVisible .dmTable {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.dmTable.isTouched {
+  border-color: rgba(124, 255, 155, 0.45);
+  box-shadow: 0 0 0 3px rgba(124, 255, 155, 0.06);
+}
+
+.dmTableHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.dmTableTag {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+  transition: color 400ms ease;
+}
+
+.dmTable.isTouched .dmTableTag {
+  color: var(--accent);
+}
+
+.dmTable ul {
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+}
+
+.dmTable li {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.dmKind {
+  font-style: normal;
+  font-size: 10px;
+  color: var(--muted-2);
+}
+
+.dmKind-pk,
+.dmKind-fk {
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+.dmSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.dmPanel {
+  padding: 20px;
+  font-family: var(--mono);
+}
+
+.dmPanel + .dmPanel {
+  border-top: 1px solid var(--border);
+  flex: 1;
+}
+
+.dmPanelHead {
+  margin-bottom: 14px;
+}
+
+.dmLive {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+}
+
+.dmLive i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+.dmEndpoints {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dmEndpoints li {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  transition:
+    background 400ms ease,
+    border-color 400ms ease,
+    color 400ms ease;
+}
+
+.dmEndpoints li.isActive {
+  background: var(--surface-2);
+  border-color: var(--border-light);
+  color: var(--text);
+}
+
+.dmMethod {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--muted-2);
+}
+
+.isActive .dmMethod {
+  color: var(--accent);
+}
+
+.dmPath {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dmStatus {
+  font-size: 10px;
+  color: var(--muted-2);
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.isActive .dmStatus {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.dmQuery {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+  font-size: 11px;
+  color: var(--text);
+}
+
+.dmQueryLabel {
+  color: var(--muted-2);
+}
+
+.dmRules {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dmRules li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.dmRuleKind {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+}
+
+.dmPipeline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dmPipeline li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dmPipeline li + li::before {
+  content: "→";
+  color: var(--muted-2);
+}
+
+.dmPipeline li:last-child {
+  color: var(--accent);
+}
+
+@media (max-width: 1100px) {
+  .dmBody {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dmCanvas {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dmSide {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .dmPanel + .dmPanel {
+    border-top: 0;
+    border-left: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 900px) {
+  .dataModel {
+    padding: 88px 0;
+  }
+
+  .dmHeader {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .dmIntro {
+    justify-self: start;
+  }
+
+  .dmChips {
+    display: none;
+  }
+
+  .dmStage {
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .dmLinks,
+  .dmRelLabel {
+    display: none;
+  }
+
+  .dmTable {
+    position: static;
+    width: auto;
+  }
+
+  .dmSide {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dmPanel + .dmPanel {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 520px) {
+  .dmCanvas {
+    padding: 16px;
+  }
+
+  .dmStage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dmLink {
+    stroke-dashoffset: 0;
+  }
+
+  .isVisible .dmLink {
+    animation: none;
+  }
+
+  .dmPulse {
+    display: none;
+  }
+
+  .dmTable,
+  .dmRelLabel {
+    transition: none;
+  }
+}
