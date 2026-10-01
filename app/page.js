@@ -101,6 +101,7 @@ export default function Home() {
         <a className="brand" href="#top">
           <ArquetMark className="brandMark" strokeWidth={56} />
           Arquet
+          <span className="brandTagline">Where business logic becomes software</span>
         </a>
 
         <nav className="navLinks">
@@ -111,6 +112,24 @@ export default function Home() {
           </a>
         </nav>
       </header>
+
+      <div className="cover">
+        <Image
+          src="/images/cover-architecture.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="coverImage"
+        />
+      </div>
+
+      <div className="coverIconRow shell">
+        <div className="coverIcon intro" style={{ "--d": "0ms" }}>
+          <ArquetMark className="coverMark" strokeWidth={40} />
+          <span className="sr-only">Arquet</span>
+        </div>
+      </div>
 
       <div className="heroBackdrop" aria-hidden="true">
         <div className="heroGrid" />

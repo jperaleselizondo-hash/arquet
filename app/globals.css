@@ -1881,6 +1881,117 @@ main {
   color: var(--accent);
 }
 
+.brandTagline {
+  margin-left: 6px;
+  padding-left: 14px;
+  border-left: 1px solid var(--border-light);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.cover {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: clamp(180px, 26vw, 320px);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.coverImage {
+  object-fit: cover;
+  object-position: center 40%;
+  filter: grayscale(0.15) brightness(0.85);
+  animation: coverSettle 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(9, 9, 9, 0.55));
+  pointer-events: none;
+}
+
+@keyframes coverSettle {
+  from {
+    transform: scale(1.06);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.coverIconRow {
+  position: relative;
+  z-index: 2;
+  height: 0;
+}
+
+.coverIcon {
+  width: 76px;
+  height: 76px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+}
+
+.coverMark {
+  width: 38px;
+  height: 38px;
+  color: var(--accent);
+}
+
+.cover + .coverIconRow + .heroBackdrop + .hero {
+  padding-top: 90px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  .brandTagline {
+    display: none;
+  }
+
+  .coverIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .coverMark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cover + .coverIconRow + .heroBackdrop + .hero {
+    padding-top: 70px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coverImage {
+    animation: none;
+  }
+}
+
 .heroMark {
   position: absolute;
   top: 70px;
