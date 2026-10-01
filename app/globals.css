@@ -1978,7 +1978,24 @@ main {
    ------------------------- */
 
 .problem .split {
-  row-gap: 72px;
+  grid-template-columns: 1fr 1.1fr;
+  column-gap: 56px;
+  row-gap: 40px;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.problem .split .sectionLabel {
+  margin-bottom: 18px;
+}
+
+.problem .largeBody p {
+  margin-bottom: 16px;
+}
+
+.problem .largeBody strong {
+  margin-top: 24px;
+  padding-top: 16px;
 }
 
 .problemImage {
@@ -1996,7 +2013,10 @@ main {
 
 @media (max-width: 900px) {
   .problem .split {
-    row-gap: 48px;
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 
   .problemImage {
