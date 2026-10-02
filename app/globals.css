@@ -3475,3 +3475,45 @@ main {
     left: 10px;
   }
 }
+
+/* -------------------------
+   PAGE-WIDE DATAGRID + ALTERNATING GLOW
+   ------------------------- */
+
+main > section:not(.hero) {
+  position: relative;
+  isolation: isolate;
+}
+
+main > section:not(.hero)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center top;
+  opacity: 0.32;
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+
+/* Glow on every other section (work, process, custom) so section changes read at a glance. */
+main > section:nth-of-type(odd):not(.hero):not(:last-of-type)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 55% at 50% 40%, rgba(255, 255, 255, 0.07), transparent 70%);
+  animation: glowPulse 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main > section::after {
+    animation: none;
+  }
+}
