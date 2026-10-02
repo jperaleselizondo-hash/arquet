@@ -3502,7 +3502,7 @@ main > section:not(.hero)::before {
 }
 
 /* Glow on every other section (work, process, custom) so section changes read at a glance. */
-main > section:nth-of-type(odd):not(.hero):not(:last-of-type)::after {
+main > section:nth-of-type(odd):not(.hero)::after {
   content: "";
   position: absolute;
   inset: 0;

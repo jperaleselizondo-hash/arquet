@@ -298,26 +298,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="contact">
-        <div className="shell contactInner" data-reveal>
-          <ArquetMark className="contactMark" strokeWidth={30} />
-
-          <div className="sectionLabel">Start a conversation</div>
-
-          <h2>Tell us how your business works today.</h2>
-
-          <p>
-            A process, a spreadsheet, or something your current software cannot
-            do is enough to start.
-          </p>
-
-          <a className="primaryButton" href={CONTACT_HREF}>
-            Discuss your project
-            <span>→</span>
-          </a>
-        </div>
-      </section>
-
       <footer className="footer">
         <div className="shell footerInner">
           <div>
