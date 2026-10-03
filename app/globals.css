@@ -1005,7 +1005,9 @@ strong {
 
 .fit {
   position: relative;
-  overflow: hidden;
+  z-index: 2;
+  overflow-x: clip;
+  overflow-y: visible;
   padding: 120px 0;
   isolation: isolate;
 }
