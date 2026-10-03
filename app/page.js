@@ -7,6 +7,7 @@ import FitGlobe from "@/components/fit-globe";
 import ArquetMark from "@/components/arquet-mark";
 import DataModelBoard from "@/components/data-model-board";
 import Chain from "@/components/chain";
+import BuilderRepos from "@/components/builder-repos";
 
 const CONTACT_HREF =
   "mailto:jperaleselizondo@gmail.com?subject=Arquet%20project%20inquiry";
@@ -295,6 +296,12 @@ export default function Home() {
               </ol>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="builder" className="builderSection darkSection">
+        <div className="shell">
+          <BuilderRepos />
         </div>
       </section>
 
